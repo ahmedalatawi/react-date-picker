@@ -1,0 +1,281 @@
+.time-picker {
+  .time-picker-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: white;
+    border: 2px solid #d1d5db;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    color: #374151;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    min-width: 140px;
+
+    &:hover:not(:disabled) {
+      border-color: #9ca3af;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: #f9fafb;
+    }
+  }
+
+  .time-picker-dropdown {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    width: 280px;
+
+    .time-picker-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      background: #f9fafb;
+      border-bottom: 1px solid #e5e7eb;
+      color: #374151;
+
+      .time-segment {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #374151;
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: #f3f4f6;
+        }
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+        }
+
+        &.active {
+          background: #3b82f6;
+          color: white;
+          box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+        }
+      }
+
+      .period-toggle {
+        margin-left: 0.75rem;
+        padding: 0.5rem 0.75rem;
+        background: #e5e7eb;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #374151;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: #d1d5db;
+        }
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+        }
+      }
+    }
+
+    .time-picker-body {
+      padding: 1.5rem;
+
+      .time-numbers {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+
+        .time-number {
+          padding: 0.75rem;
+          border: none;
+          background: none;
+          font-size: 0.875rem;
+          color: #374151;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          font-weight: 500;
+
+          &:hover {
+            background: #f3f4f6;
+            color: #111827;
+          }
+
+          &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+          }
+
+          &.selected {
+            background: #3b82f6;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+
+            &:hover {
+              background: #2563eb;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.dark-mode {
+    .time-picker-trigger {
+      background: #1f2937;
+      border-color: #4b5563;
+      color: #f3f4f6;
+
+      &:hover:not(:disabled) {
+        border-color: #6b7280;
+      }
+
+      &:focus {
+        border-color: #3b82f6;
+      }
+
+      &:disabled {
+        background: #374151;
+      }
+    }
+
+    .time-picker-dropdown {
+      background: #1f2937;
+      border-color: #374151;
+
+      .time-picker-header {
+        background: #374151;
+        border-bottom-color: #4b5563;
+        color: #f3f4f6;
+
+        .time-segment {
+          color: #f3f4f6;
+
+          &:hover {
+            background: #4b5563;
+          }
+
+          &.active {
+            background: #3b82f6;
+            color: white;
+          }
+        }
+
+        .period-toggle {
+          background: #4b5563;
+          color: #f3f4f6;
+
+          &:hover {
+            background: #6b7280;
+          }
+        }
+      }
+
+      .time-picker-body {
+        .time-number {
+          color: #f3f4f6;
+
+          &:hover {
+            background: #374151;
+            color: #f9fafb;
+          }
+
+          &.selected {
+            background: #3b82f6;
+            color: white;
+
+            &:hover {
+              background: #2563eb;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Dark mode styles */
+// @media (prefers-color-scheme: dark) {
+//   .time-picker {
+//     .time-picker-trigger {
+//       background: #1f2937;
+//       border-color: #4b5563;
+//       color: #f3f4f6;
+
+//       &:hover:not(:disabled) {
+//         border-color: #6b7280;
+//       }
+
+//       &:focus {
+//         border-color: #3b82f6;
+//       }
+
+//       &:disabled {
+//         background: #374151;
+//       }
+//     }
+
+//     .time-picker-dropdown {
+//       background: #1f2937;
+//       border-color: #374151;
+
+//       .time-picker-header {
+//         background: #374151;
+//         border-bottom-color: #4b5563;
+
+//         .time-segment {
+//           color: #f3f4f6;
+
+//           &:hover {
+//             background: #4b5563;
+//           }
+//         }
+
+//         .period-toggle {
+//           background: #4b5563;
+//           color: #f3f4f6;
+
+//           &:hover {
+//             background: #6b7280;
+//           }
+//         }
+//       }
+
+//       .time-picker-body {
+//         .time-number {
+//           color: #f3f4f6;
+
+//           &:hover {
+//             background: #374151;
+//             color: #f9fafb;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

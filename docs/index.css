@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --scrollbar-track: theme('colors.gray.100');
+    --scrollbar-thumb: theme('colors.gray.300');
+  }
+
+  .dark {
+    --scrollbar-track: theme('colors.gray.800');
+    --scrollbar-thumb: theme('colors.gray.600');
+  }
+
+  ::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border: 3px solid var(--scrollbar-track);
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.gray.400');
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.gray.500');
+  }
+}
+
+.prose {
+  @apply max-w-none;
+}
+
+.prose pre {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+.prose code {
+  @apply text-indigo-600 dark:text-indigo-400;
+}
+
+.prose a {
+  @apply text-indigo-600 dark:text-indigo-400 no-underline hover:underline;
+}
