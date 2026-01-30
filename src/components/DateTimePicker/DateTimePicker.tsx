@@ -51,7 +51,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   const setIsOpen = onOpenChange || setInternalIsOpen;
 
   const [currentDate, setCurrentDate] = useState(
-    mode === "single" ? (value as Date) : (value as [Date, Date])[0]
+    mode === "single" ? (value as Date) : (value as [Date, Date])[0],
   );
   const [selectedRange, setSelectedRange] = useState<
     [Date | null, Date | null]
@@ -60,7 +60,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       ? Array.isArray(value)
         ? [value[0], value[1]]
         : [null, null]
-      : [null, null]
+      : [null, null],
   );
   const [hoverDate, setHoverDate] = useState<Date | null>(null);
 
@@ -71,7 +71,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
     isOpen,
     () => setIsOpen(false),
     triggerRef,
-    contentRef
+    contentRef,
   );
 
   const handleDateHover = (date: Date | null) => {
@@ -114,7 +114,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   const handleKeyDown = useKeyboardNavigation(
     currentDate,
     handleDateClick,
-    setCurrentDate
+    setCurrentDate,
   );
 
   const handleTimeChange = (newDate: Date) => {
@@ -127,6 +127,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
     try {
       return format(date, formatStr, { locale });
     } catch (error) {
+      console.error("Date formatting error: ", error);
       return format(date, formatStr);
     }
   };

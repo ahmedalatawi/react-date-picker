@@ -32,6 +32,8 @@ export const NotesExample: React.FC = () => {
     timePickerClassName: "notes-time",
   };
 
+  console.log("Hovered Date:", hoveredDate);
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
       <DateTimePicker

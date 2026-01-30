@@ -1,4 +1,4 @@
-# @atawi/react-date-picker
+# React Date Picker
 
 A beautiful, customizable date and time picker component for React with comprehensive built-in styling, multiple themes and localization support.
 

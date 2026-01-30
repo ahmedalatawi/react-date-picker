@@ -32,6 +32,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({
     try {
       return format(date, formatStr, { locale });
     } catch (error) {
+      console.error("Time formatting error: ", error);
       return format(date, formatStr);
     }
   };

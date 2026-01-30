@@ -64,6 +64,7 @@ export const Calendar: React.FC<CalendarProps> = ({
     try {
       return format(date, formatStr, { locale });
     } catch (error) {
+      console.error("Date formatting error: ", error);
       return format(date, formatStr);
     }
   };

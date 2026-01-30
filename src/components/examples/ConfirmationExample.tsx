@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { DateTimePicker } from '../DateTimePicker/DateTimePicker';
-import { ConfirmButton } from '../DateTimePicker/ConfirmButton';
-import { addDays } from 'date-fns';
+import React, { useState } from "react";
+import { DateTimePicker } from "../DateTimePicker/DateTimePicker";
+import { ConfirmButton } from "../DateTimePicker/ConfirmButton";
 
 export const ConfirmationExample: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
@@ -14,15 +13,15 @@ export const ConfirmationExample: React.FC = () => {
   };
 
   const confirmationTheme = {
-    containerClassName: 'confirmation-picker',
-    triggerClassName: 'confirmation-trigger',
-    calendarClassName: 'confirmation-calendar',
-    dayClassName: 'confirmation-day',
-    selectedDayClassName: 'confirmation-selected',
+    containerClassName: "confirmation-picker",
+    triggerClassName: "confirmation-trigger",
+    calendarClassName: "confirmation-calendar",
+    dayClassName: "confirmation-day",
+    selectedDayClassName: "confirmation-selected",
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
       <DateTimePicker
         value={selectedDate}
         onChange={(date) => setSelectedDate(date as Date)}
@@ -32,21 +31,23 @@ export const ConfirmationExample: React.FC = () => {
         isOpen={isOpen}
         onOpenChange={setIsOpen}
         footer={
-          <div style={{ 
-            marginTop: '1rem', 
-            paddingTop: '1rem', 
-            borderTop: '1px solid #e5e7eb', 
-            display: 'flex', 
-            justifyContent: 'flex-end' 
-          }}>
+          <div
+            style={{
+              marginTop: "1rem",
+              paddingTop: "1rem",
+              borderTop: "1px solid #e5e7eb",
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
             <ConfirmButton onConfirm={handleConfirm} />
           </div>
         }
       />
-      <div style={{ fontSize: '0.875rem', color: '#4b5563' }}>
+      <div style={{ fontSize: "0.875rem", color: "#4b5563" }}>
         Confirmed date: {confirmedDate.toLocaleDateString()}
       </div>
-      <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>
+      <div style={{ fontSize: "0.875rem", color: "#6b7280" }}>
         Selection requires confirmation via OK button
       </div>
     </div>

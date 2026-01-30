@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { DateTimePicker } from "./components/DateTimePicker/DateTimePicker";
-import { addDays, subDays } from "date-fns";
-import { enUS, es, fr, de, ja, ar, zhCN, ru } from "date-fns/locale";
+import { addDays } from "date-fns";
+import { enUS, fr, de, ja, ar, zhCN } from "date-fns/locale";
 import { HotelBookingExample } from "./components/examples/HotelBookingExample";
 import { NotesExample } from "./components/examples/NotesExample";
 import { RangeNotesExample } from "./components/examples/RangeNotesExample";
@@ -16,14 +16,6 @@ function App() {
   const [dateRange, setDateRange] = useState<[Date, Date]>([
     new Date(),
     addDays(new Date(), 5),
-  ]);
-  const [hotelRange, setHotelRange] = useState<[Date, Date]>([
-    new Date(),
-    addDays(new Date(), 3),
-  ]);
-  const [simpleRange, setSimpleRange] = useState<[Date, Date]>([
-    new Date(),
-    addDays(new Date(), 7),
   ]);
   const [smallDate, setSmallDate] = useState<Date>(new Date());
   const [compactDate, setCompactDate] = useState<Date>(new Date());
@@ -48,17 +40,6 @@ function App() {
     selectedDayClassName: "modern-selected",
     rangeClassName: "modern-range",
     timePickerClassName: "modern-time",
-  };
-
-  // Simple Range Theme
-  const simpleRangeTheme = {
-    containerClassName: "simple-range-picker",
-    triggerClassName: "simple-trigger",
-    calendarClassName: "simple-calendar",
-    dayClassName: "simple-day",
-    selectedDayClassName: "simple-selected",
-    rangeClassName: "simple-range",
-    timePickerClassName: "simple-time",
   };
 
   // Compact Theme
