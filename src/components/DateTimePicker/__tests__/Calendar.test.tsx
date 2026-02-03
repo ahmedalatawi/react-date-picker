@@ -6,7 +6,7 @@ import { enUS, ja } from "date-fns/locale";
 
 describe("Calendar", () => {
   const defaultProps = {
-    currentDate: new Date("2024-03-15"),
+    currentDate: new Date(2024, 2, 15),
     onDateClick: vi.fn(),
     onDateHover: vi.fn(),
     onPrevMonth: vi.fn(),
@@ -51,7 +51,7 @@ describe("Calendar", () => {
   });
 
   it("shows disabled dates correctly", () => {
-    const disabledDates = [new Date("2024-03-10")];
+    const disabledDates = [new Date(2024, 2, 10)];
     render(<Calendar {...defaultProps} disabledDates={disabledDates} />);
     const disabledDay = screen.getByText("10");
     expect(disabledDay).toHaveClass("disabled");
@@ -67,9 +67,12 @@ describe("Calendar", () => {
   it("handles year selection view", async () => {
     render(<Calendar {...defaultProps} />);
     await userEvent.click(screen.getByText("2024"));
-    const years = screen
-      .getAllByRole("button")
-      .filter((button) => /^\d{4}$/.test(button.textContent || ""));
+    const yearsContainer = document.querySelector(
+      ".calendar-years",
+    ) as HTMLElement | null;
+    const years = yearsContainer
+      ? Array.from(yearsContainer.querySelectorAll("button"))
+      : [];
     expect(years).toHaveLength(12);
   });
 
@@ -77,7 +80,7 @@ describe("Calendar", () => {
     const rangeProps = {
       ...defaultProps,
       mode: "range" as const,
-      selectedRange: [new Date("2024-03-15"), new Date("2024-03-20")] as [
+      selectedRange: [new Date(2024, 2, 15), new Date(2024, 2, 20)] as [
         Date,
         Date,
       ],

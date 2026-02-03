@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { TimePicker } from "../TimePicker";
@@ -27,8 +27,14 @@ describe("TimePicker", () => {
   it("opens time picker dropdown on click", async () => {
     render(<TimePicker {...defaultProps} />);
     await userEvent.click(screen.getByRole("button"));
-    expect(screen.getByText("02")).toBeInTheDocument();
-    expect(screen.getByText("30")).toBeInTheDocument();
+    const colon = await screen.findByText(":");
+    const header = colon.parentElement as HTMLElement;
+    expect(
+      within(header).getByRole("button", { name: "02" }),
+    ).toBeInTheDocument();
+    expect(
+      within(header).getByRole("button", { name: "30" }),
+    ).toBeInTheDocument();
   });
 
   it("handles hour selection", async () => {
@@ -41,7 +47,9 @@ describe("TimePicker", () => {
   it("handles minute selection", async () => {
     render(<TimePicker {...defaultProps} />);
     await userEvent.click(screen.getByRole("button"));
-    await userEvent.click(screen.getByText(":"));
+    const colon = await screen.findByText(":");
+    const header = colon.parentElement as HTMLElement;
+    await userEvent.click(within(header).getByRole("button", { name: "30" }));
     await userEvent.click(screen.getByText("45"));
     expect(defaultProps.onChange).toHaveBeenCalled();
   });

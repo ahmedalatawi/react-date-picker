@@ -58,19 +58,12 @@ describe("useA11y", () => {
       useA11y(true, mockOnClose, mockTriggerRef, mockContentRef),
     );
 
-    button1.focus();
     const tabEvent = new KeyboardEvent("keydown", {
       key: "Tab",
       shiftKey: true,
     });
-    Object.defineProperty(document, "activeElement", {
-      value: button1,
-      configurable: true,
-    });
-
     document.dispatchEvent(tabEvent);
 
-    // Focus should move to last element
     expect(document.activeElement).toBe(button2);
   });
 });
