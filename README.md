@@ -1,10 +1,12 @@
 # React Date Picker
 
-A beautiful, customizable date and time picker component for React with comprehensive built-in styling, multiple themes and localization support.
+![](https://github.com/AhmedAlatawi/react-date-picker/actions/workflows/ci.yml/badge.svg)
+![npm version](https://img.shields.io/npm/v/@atawi/react-date-picker)
+![license](https://img.shields.io/npm/l/@atawi/react-date-picker)
+![bundle size](https://img.shields.io/bundlephobia/minzip/@atawi/react-date-picker)
+[![codecov](https://codecov.io/github/ahmedalatawi/react-date-picker/graph/badge.svg?token=141KSD7U2J)](https://codecov.io/github/ahmedalatawi/react-date-picker)
 
-![npm version](https://img.shields.io/npm/v/@ahmedalatawi/react-date-picker)
-![license](https://img.shields.io/npm/l/@ahmedalatawi/react-date-picker)
-![bundle size](https://img.shields.io/bundlephobia/minzip/@ahmedalatawi/react-date-picker)
+A beautiful, customizable date and time picker component for React with comprehensive built-in styling, multiple themes and localization support.
 
 ## Features
 
