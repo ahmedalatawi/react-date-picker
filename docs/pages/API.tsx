@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-async-light";
+import oneDark from "react-syntax-highlighter/dist/esm/styles/prism/one-dark";
 
 export const API: FC = () => {
   return (

@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-async-light";
+import oneDark from "react-syntax-highlighter/dist/esm/styles/prism/one-dark";
 import { DateTimePicker } from "../../src/components/DateTimePicker/DateTimePicker";
 import { addDays } from "date-fns";
 
@@ -9,53 +9,53 @@ export const Themes: FC = () => {
   const [date, setDate] = useState(new Date());
   const [dateRange, setDateRange] = useState<[Date, Date]>([
     new Date(),
-    addDays(new Date(), 5)
+    addDays(new Date(), 5),
   ]);
 
   const modernTheme = {
-    containerClassName: 'modern-picker',
-    triggerClassName: 'modern-trigger',
-    calendarClassName: 'modern-calendar',
-    dayClassName: 'modern-day',
-    selectedDayClassName: 'modern-selected',
-    rangeClassName: 'modern-range',
-    timePickerClassName: 'modern-time',
+    containerClassName: "modern-picker",
+    triggerClassName: "modern-trigger",
+    calendarClassName: "modern-calendar",
+    dayClassName: "modern-day",
+    selectedDayClassName: "modern-selected",
+    rangeClassName: "modern-range",
+    timePickerClassName: "modern-time",
   };
 
   const materialTheme = {
-    containerClassName: 'material-picker',
-    triggerClassName: 'material-trigger',
-    calendarClassName: 'material-calendar',
-    dayClassName: 'material-day',
-    selectedDayClassName: 'material-selected',
-    timePickerClassName: 'material-time',
+    containerClassName: "material-picker",
+    triggerClassName: "material-trigger",
+    calendarClassName: "material-calendar",
+    dayClassName: "material-day",
+    selectedDayClassName: "material-selected",
+    timePickerClassName: "material-time",
   };
 
   const gradientTheme = {
-    containerClassName: 'gradient-picker',
-    triggerClassName: 'gradient-trigger',
-    calendarClassName: 'gradient-calendar',
-    dayClassName: 'gradient-day',
-    selectedDayClassName: 'gradient-selected',
-    rangeClassName: 'gradient-range',
-    timePickerClassName: 'gradient-time',
+    containerClassName: "gradient-picker",
+    triggerClassName: "gradient-trigger",
+    calendarClassName: "gradient-calendar",
+    dayClassName: "gradient-day",
+    selectedDayClassName: "gradient-selected",
+    rangeClassName: "gradient-range",
+    timePickerClassName: "gradient-time",
   };
 
   const hotelTheme = {
-    containerClassName: 'hotel-picker',
-    triggerClassName: 'hotel-trigger',
-    calendarClassName: 'hotel-calendar',
-    dayClassName: 'hotel-day',
-    selectedDayClassName: 'hotel-selected',
-    rangeClassName: 'hotel-range',
+    containerClassName: "hotel-picker",
+    triggerClassName: "hotel-trigger",
+    calendarClassName: "hotel-calendar",
+    dayClassName: "hotel-day",
+    selectedDayClassName: "hotel-selected",
+    rangeClassName: "hotel-range",
   };
 
   return (
     <div className="prose dark:prose-invert">
       <h1>Themes</h1>
       <p>
-        The Date Time Picker comes with beautiful built-in styling and supports full customization
-        through CSS classes.
+        The Date Time Picker comes with beautiful built-in styling and supports
+        full customization through CSS classes.
       </p>
 
       <h2>Modern Theme (Default)</h2>
@@ -67,7 +67,7 @@ export const Themes: FC = () => {
         />
       </div>
       <SyntaxHighlighter language="typescript" style={oneDark}>
-{`const modernTheme = {
+        {`const modernTheme = {
   containerClassName: 'modern-picker',
   triggerClassName: 'modern-trigger',
   calendarClassName: 'modern-calendar',
@@ -87,7 +87,7 @@ export const Themes: FC = () => {
         />
       </div>
       <SyntaxHighlighter language="typescript" style={oneDark}>
-{`const materialTheme = {
+        {`const materialTheme = {
   containerClassName: 'material-picker',
   triggerClassName: 'material-trigger',
   calendarClassName: 'material-calendar',
@@ -108,7 +108,7 @@ export const Themes: FC = () => {
         />
       </div>
       <SyntaxHighlighter language="typescript" style={oneDark}>
-{`const gradientTheme = {
+        {`const gradientTheme = {
   containerClassName: 'gradient-picker',
   triggerClassName: 'gradient-trigger',
   calendarClassName: 'gradient-calendar',
@@ -130,7 +130,7 @@ export const Themes: FC = () => {
         />
       </div>
       <SyntaxHighlighter language="typescript" style={oneDark}>
-{`const hotelTheme = {
+        {`const hotelTheme = {
   containerClassName: 'hotel-picker',
   triggerClassName: 'hotel-trigger',
   calendarClassName: 'hotel-calendar',
@@ -142,29 +142,46 @@ export const Themes: FC = () => {
 
       <h2>Custom Themes</h2>
       <p>
-        You can create your own theme by providing custom CSS classes for each element.
-        The <code>styles</code> prop accepts the following properties:
+        You can create your own theme by providing custom CSS classes for each
+        element. The <code>styles</code> prop accepts the following properties:
       </p>
 
       <ul>
-        <li><code>containerClassName</code>: Main container styles</li>
-        <li><code>triggerClassName</code>: Input/trigger button styles</li>
-        <li><code>calendarClassName</code>: Calendar container styles</li>
-        <li><code>dayClassName</code>: Calendar day button styles</li>
-        <li><code>selectedDayClassName</code>: Selected day styles</li>
-        <li><code>rangeClassName</code>: Date range styles</li>
-        <li><code>timePickerClassName</code>: Time picker section styles</li>
-        <li><code>disabledClassName</code>: Disabled date styles</li>
+        <li>
+          <code>containerClassName</code>: Main container styles
+        </li>
+        <li>
+          <code>triggerClassName</code>: Input/trigger button styles
+        </li>
+        <li>
+          <code>calendarClassName</code>: Calendar container styles
+        </li>
+        <li>
+          <code>dayClassName</code>: Calendar day button styles
+        </li>
+        <li>
+          <code>selectedDayClassName</code>: Selected day styles
+        </li>
+        <li>
+          <code>rangeClassName</code>: Date range styles
+        </li>
+        <li>
+          <code>timePickerClassName</code>: Time picker section styles
+        </li>
+        <li>
+          <code>disabledClassName</code>: Disabled date styles
+        </li>
       </ul>
 
       <h3>CSS Styling</h3>
       <p>
-        The library includes comprehensive built-in styles and can be easily customized with CSS classes.
-        You can override any part of the component's appearance using standard CSS.
+        The library includes comprehensive built-in styles and can be easily
+        customized with CSS classes. You can override any part of the
+        component's appearance using standard CSS.
       </p>
-      
+
       <SyntaxHighlighter language="typescript" style={oneDark}>
-{`// Example: Custom theme using CSS classes
+        {`// Example: Custom theme using CSS classes
 const brandTheme = {
   triggerClassName: 'my-brand-trigger',
   calendarClassName: 'my-brand-calendar',
@@ -176,7 +193,7 @@ const brandTheme = {
 
       <p>Then add your custom CSS:</p>
       <SyntaxHighlighter language="css" style={oneDark}>
-{`.my-brand-trigger {
+        {`.my-brand-trigger {
   background: white;
   border: 2px solid #e5e7eb;
   border-radius: 8px;
@@ -200,12 +217,13 @@ const brandTheme = {
 
       <h3>Dark Mode Support</h3>
       <p>
-        All themes support dark mode out of the box. Use the <code>darkMode</code> prop or CSS media queries
-        to enable dark mode styling:
+        All themes support dark mode out of the box. Use the{" "}
+        <code>darkMode</code> prop or CSS media queries to enable dark mode
+        styling:
       </p>
 
       <SyntaxHighlighter language="typescript" style={oneDark}>
-{`// Enable dark mode with prop
+        {`// Enable dark mode with prop
 <DateTimePicker
   value={date}
   onChange={setDate}
