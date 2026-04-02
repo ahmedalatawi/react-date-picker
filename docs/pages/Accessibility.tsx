@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { DateTimePicker } from "../../src/components/DateTimePicker/DateTimePicker";
 
-export const Accessibility: React.FC = () => {
+export const Accessibility: FC = () => {
   const [date, setDate] = useState(new Date());
 
   return (

@@ -1,11 +1,11 @@
-import React from 'react';
+import type { FC } from "react";
 
 interface IconProps {
   size?: number;
   className?: string;
 }
 
-export const ChevronLeftIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+export const ChevronLeftIcon: FC<IconProps> = ({ size = 24, className = '' }) => (
   <svg
     width={size}
     height={size}
@@ -21,7 +21,7 @@ export const ChevronLeftIcon: React.FC<IconProps> = ({ size = 24, className = ''
   </svg>
 );
 
-export const ChevronRightIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+export const ChevronRightIcon: FC<IconProps> = ({ size = 24, className = '' }) => (
   <svg
     width={size}
     height={size}
@@ -37,7 +37,7 @@ export const ChevronRightIcon: React.FC<IconProps> = ({ size = 24, className = '
   </svg>
 );
 
-export const ClockIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+export const ClockIcon: FC<IconProps> = ({ size = 24, className = '' }) => (
   <svg
     width={size}
     height={size}

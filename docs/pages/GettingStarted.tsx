@@ -1,9 +1,9 @@
-import React from "react";
+import type { FC } from "react";
 import { Link } from "react-router-dom";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-export const GettingStarted: React.FC = () => {
+export const GettingStarted: FC = () => {
   return (
     <div className="prose dark:prose-invert">
       <h1>Getting Started</h1>
@@ -22,7 +22,7 @@ export const GettingStarted: React.FC = () => {
       <h2>Basic Usage</h2>
       <SyntaxHighlighter language="tsx" style={oneDark}>
         {`import { DateTimePicker } from '@atawi/react-date-picker';
-import { enUS } from 'date-fns/locale';
+import { enUS } from "date-fns/locale";
 
 function App() {
   const [date, setDate] = useState(new Date());

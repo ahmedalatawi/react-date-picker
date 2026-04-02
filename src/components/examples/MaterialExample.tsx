@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { DateTimePicker } from '../DateTimePicker/DateTimePicker';
+import type { FC } from "react";
+import { useState } from "react";
+import { DateTimePicker } from "../DateTimePicker/DateTimePicker";
 
-export const MaterialExample: React.FC = () => {
+export const MaterialExample: FC = () => {
   const [date, setDate] = useState<Date>(new Date());
 
   const materialTheme = {

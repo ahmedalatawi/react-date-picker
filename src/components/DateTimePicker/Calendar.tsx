@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 import {
   format,
   isWithinInterval,
@@ -34,7 +35,7 @@ interface CalendarProps {
   darkMode?: boolean;
 }
 
-export const Calendar: React.FC<CalendarProps> = ({
+export const Calendar: FC<CalendarProps> = ({
   currentDate,
   selectedDate,
   selectedRange = [null, null],

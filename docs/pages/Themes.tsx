@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { DateTimePicker } from '../../src/components/DateTimePicker/DateTimePicker';
-import { addDays } from 'date-fns';
+import type { FC } from "react";
+import { useState } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { DateTimePicker } from "../../src/components/DateTimePicker/DateTimePicker";
+import { addDays } from "date-fns";
 
-export const Themes: React.FC = () => {
+export const Themes: FC = () => {
   const [date, setDate] = useState(new Date());
   const [dateRange, setDateRange] = useState<[Date, Date]>([
     new Date(),

@@ -1,4 +1,4 @@
-import { addDays, subDays, eachDayOfInterval, isSameDay, startOfWeek, endOfWeek, isSameWeek } from 'date-fns';
+import { addDays, subDays, eachDayOfInterval, isSameDay, startOfWeek, endOfWeek, isSameWeek } from "date-fns";
 
 export const generateDisabledDates = (
   bookedRanges: [Date, Date][],

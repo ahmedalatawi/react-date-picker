@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { DateTimePicker } from '../DateTimePicker/DateTimePicker';
-import { startOfWeek, endOfWeek } from 'date-fns';
+import type { FC } from "react";
+import { useState } from "react";
+import { DateTimePicker } from "../DateTimePicker/DateTimePicker";
+import { startOfWeek, endOfWeek } from "date-fns";
 
-export const WeekRangeExample: React.FC = () => {
+export const WeekRangeExample: FC = () => {
   const [weekRange, setWeekRange] = useState<[Date, Date]>([
     startOfWeek(new Date()),
     endOfWeek(new Date())

@@ -1,5 +1,5 @@
-import { isSameDay, isWithinInterval } from 'date-fns';
-import { DateNoteType } from '../types/dates';
+import { isSameDay, isWithinInterval } from "date-fns";
+import { DateNoteType } from "../types/dates";
 
 export const findNoteForDate = (date: Date, notes: DateNoteType[]): string | null => {
   for (const noteItem of notes) {

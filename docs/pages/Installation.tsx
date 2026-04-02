@@ -1,8 +1,8 @@
-import React from "react";
+import type { FC } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-export const Installation: React.FC = () => {
+export const Installation: FC = () => {
   return (
     <div className="prose dark:prose-invert max-w-none">
       <h1>Installation & Setup</h1>
@@ -99,10 +99,10 @@ module.exports = {
       </p>
       <SyntaxHighlighter language="typescript" style={oneDark}>
         {`// Import only what you need
-import { DateTimePicker } from '@atawi/react-date-picker';
+import { DateTimePicker } from "@atawi/react-date-picker";
 
 // Or import specific components
-import { TimePicker, Calendar } from '@atawi/react-date-picker';`}
+import { TimePicker, Calendar } from "@atawi/react-date-picker";`}
       </SyntaxHighlighter>
     </div>
   );

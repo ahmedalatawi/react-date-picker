@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest';
-import { findNoteForDate, hasNote } from './notes';
-import { DateNoteType } from '../types/dates';
+import { describe, it, expect } from "vitest";
+import { findNoteForDate, hasNote } from "./notes";
+import { DateNoteType } from "../types/dates";
 
 describe('notes utils', () => {
   const sampleNotes: DateNoteType[] = [

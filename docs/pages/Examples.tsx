@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { DateTimePicker } from "../../src/components/DateTimePicker/DateTimePicker";
@@ -6,7 +7,7 @@ import { TimePicker } from "../../src/components/TimePicker/TimePicker";
 import { enUS } from "date-fns/locale";
 import { addDays, startOfWeek, endOfWeek } from "date-fns";
 
-export const Examples: React.FC = () => {
+export const Examples: FC = () => {
   const [singleDate, setSingleDate] = useState(new Date());
   const [dateRange, setDateRange] = useState<[Date, Date]>([
     new Date(),

@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import type { FC } from "react";
+import { useState, useRef } from "react";
 import {
   format,
   addMonths,
@@ -27,7 +28,7 @@ const defaultStyles = {
   timePickerClassName: "",
 };
 
-export const DateTimePicker: React.FC<DateTimePickerProps> = ({
+export const DateTimePicker: FC<DateTimePickerProps> = ({
   value = new Date(),
   onChange,
   mode = "single",

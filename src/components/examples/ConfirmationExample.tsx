@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 import { DateTimePicker } from "../DateTimePicker/DateTimePicker";
 import { ConfirmButton } from "../DateTimePicker/ConfirmButton";
 
-export const ConfirmationExample: React.FC = () => {
+export const ConfirmationExample: FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [confirmedDate, setConfirmedDate] = useState<Date>(new Date());
   const [isOpen, setIsOpen] = useState(false);

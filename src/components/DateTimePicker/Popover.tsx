@@ -1,14 +1,15 @@
-import React from 'react';
-import { usePopper } from 'react-popper';
+import * as React from "react";
+import type { FC, ReactNode } from "react";
+import { usePopper } from "react-popper";
 
 interface PopoverProps {
   isOpen: boolean;
   onClose: () => void;
-  children: React.ReactNode;
-  content: React.ReactNode;
+  children: ReactNode;
+  content: ReactNode;
 }
 
-export const Popover: React.FC<PopoverProps> = ({ isOpen, onClose, children, content }) => {
+export const Popover: FC<PopoverProps> = ({ isOpen, onClose, children, content }) => {
   const [referenceElement, setReferenceElement] = React.useState<HTMLDivElement | null>(null);
   const [popperElement, setPopperElement] = React.useState<HTMLDivElement | null>(null);
   

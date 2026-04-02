@@ -1,5 +1,6 @@
-import { Locale } from 'date-fns';
-import { DateNoteType } from '../../types/dates';
+import { Locale } from "date-fns";
+import type { ReactNode } from "react";
+import { DateNoteType } from "../../types/dates";
 
 export interface StyleProps {
   containerClassName?: string;
@@ -15,7 +16,7 @@ export interface StyleProps {
 export interface DateTimePickerProps {
   value?: Date | [Date, Date];
   onChange: (date: Date | [Date, Date]) => void;
-  mode?: 'single' | 'range' | 'week';
+  mode?: "single" | "range" | "week";
   showTime?: boolean;
   use24Hour?: boolean;
   disabled?: boolean;
@@ -26,7 +27,7 @@ export interface DateTimePickerProps {
   onDateHover?: (date: Date | null) => void;
   isOpen?: boolean;
   onOpenChange?: (isOpen: boolean) => void;
-  footer?: React.ReactNode;
+  footer?: ReactNode;
   className?: string;
   darkMode?: boolean;
 }
