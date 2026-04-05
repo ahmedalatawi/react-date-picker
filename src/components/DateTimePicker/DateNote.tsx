@@ -1,8 +1,8 @@
-import React from "react";
+import type { FC } from "react";
 import { DateNoteProps } from "../../types/dates";
 import { findNoteForDate } from "../../utils/notes";
 
-export const DateNote: React.FC<DateNoteProps> = ({
+export const DateNote: FC<DateNoteProps> = ({
   notes,
   hoveredDate,
   selectedDate,

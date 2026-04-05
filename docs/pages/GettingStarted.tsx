@@ -1,17 +1,16 @@
-import React from "react";
+import type { FC } from "react";
 import { Link } from "react-router-dom";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { CodeBlock } from "../components/CodeBlock";
 
-export const GettingStarted: React.FC = () => {
+export const GettingStarted: FC = () => {
   return (
     <div className="prose dark:prose-invert">
       <h1>Getting Started</h1>
 
       <h2>Installation</h2>
-      <SyntaxHighlighter language="bash" style={oneDark}>
+      <CodeBlock language="bash">
         npm install @atawi/react-date-picker date-fns
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>No Setup Required</h2>
       <p>
@@ -20,9 +19,9 @@ export const GettingStarted: React.FC = () => {
       </p>
 
       <h2>Basic Usage</h2>
-      <SyntaxHighlighter language="tsx" style={oneDark}>
+      <CodeBlock language="tsx">
         {`import { DateTimePicker } from '@atawi/react-date-picker';
-import { enUS } from 'date-fns/locale';
+import { enUS } from "date-fns/locale";
 
 function App() {
   const [date, setDate] = useState(new Date());
@@ -36,14 +35,14 @@ function App() {
     />
   );
 }`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Custom Styling</h2>
       <p>
         The component is fully customizable using CSS classes. You can override
         any part of the component's appearance:
       </p>
-      <SyntaxHighlighter language="tsx" style={oneDark}>
+      <CodeBlock language="tsx">
         {`const customTheme = {
   triggerClassName: 'my-custom-trigger',
   calendarClassName: 'my-custom-calendar',
@@ -56,10 +55,10 @@ function App() {
   onChange={setDate}
   styles={customTheme}
 />`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <p>Then add your custom CSS:</p>
-      <SyntaxHighlighter language="css" style={oneDark}>
+      <CodeBlock language="css">
         {`.my-custom-trigger {
   background: #3b82f6;
   color: white;
@@ -75,19 +74,19 @@ function App() {
   background: #10b981;
   color: white;
 }`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Dark Mode</h2>
       <p>
         Enable dark mode styling with the <code>darkMode</code> prop:
       </p>
-      <SyntaxHighlighter language="tsx" style={oneDark}>
+      <CodeBlock language="tsx">
         {`<DateTimePicker
   value={date}
   onChange={setDate}
   darkMode={true}
 />`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Next Steps</h2>
       <ul>

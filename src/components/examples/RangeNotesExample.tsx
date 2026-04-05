@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 import { DateTimePicker } from "../DateTimePicker/DateTimePicker";
 import { addDays } from "date-fns";
 import { DateNoteType } from "../../types/dates";
@@ -16,7 +17,7 @@ const sampleRangeNotes: DateNoteType[] = [
   },
 ];
 
-export const RangeNotesExample: React.FC = () => {
+export const RangeNotesExample: FC = () => {
   const [dateRange, setDateRange] = useState<[Date, Date]>([
     addDays(new Date(), 1),
     addDays(new Date(), 3),

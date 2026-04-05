@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 import { DateTimePicker } from "../DateTimePicker/DateTimePicker";
 import { addDays } from "date-fns";
 import { DateNoteType } from "../../types/dates";
@@ -19,7 +20,7 @@ const sampleNotes: DateNoteType[] = [
   },
 ];
 
-export const NotesExample: React.FC = () => {
+export const NotesExample: FC = () => {
   const [date, setDate] = useState<Date>(new Date());
   const [hoveredDate, setHoveredDate] = useState<Date | null>(null);
 

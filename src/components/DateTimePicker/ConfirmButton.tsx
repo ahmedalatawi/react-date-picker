@@ -1,13 +1,13 @@
-import React from 'react';
+import type { FC, ReactNode } from "react";
 
 interface ConfirmButtonProps {
   onConfirm: () => void;
   className?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   darkMode?: boolean;
 }
 
-export const ConfirmButton: React.FC<ConfirmButtonProps> = ({
+export const ConfirmButton: FC<ConfirmButtonProps> = ({
   onConfirm,
   className = '',
   children = 'OK',

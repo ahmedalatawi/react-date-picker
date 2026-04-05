@@ -1,11 +1,11 @@
-import React from "react";
+import type { FC, ReactNode } from "react";
 
 interface TooltipProps {
-  content: React.ReactNode;
+  content: ReactNode;
   className?: string;
 }
 
-export const Tooltip: React.FC<TooltipProps> = ({
+export const Tooltip: FC<TooltipProps> = ({
   content,
   className = "",
 }) => {

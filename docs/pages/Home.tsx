@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import type { FC } from "react";
+import { Link } from "react-router-dom";
 
-export const Home: React.FC = () => {
+export const Home: FC = () => {
   return (
     <div className="prose dark:prose-invert">
       <h1>Date Time Picker</h1>

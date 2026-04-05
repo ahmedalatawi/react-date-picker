@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 import { format, setHours, setMinutes } from "date-fns";
 import { Locale } from "date-fns";
 import { ClockIcon } from "../icons";
@@ -27,7 +28,7 @@ export interface TimePickerProps {
   };
 }
 
-export const TimePicker: React.FC<TimePickerProps> = ({
+export const TimePicker: FC<TimePickerProps> = ({
   value,
   onChange,
   use24Hour = false,

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 import { TimePicker } from "../TimePicker/TimePicker";
 
-export const TimePickerExample: React.FC = () => {
+export const TimePickerExample: FC = () => {
   const [date, setDate] = useState<Date>(new Date());
   const [use24Hour, setUse24Hour] = useState(false);
 

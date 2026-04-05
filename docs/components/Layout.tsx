@@ -1,9 +1,9 @@
-import React from "react";
+import type { FC } from "react";
 import { Outlet } from "react-router-dom";
 import { Navigation } from "./Navigation";
 import { ThemeToggle } from "./ThemeToggle";
 
-export const Layout: React.FC = () => {
+export const Layout: FC = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <header className="sticky top-0 z-50 border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur">

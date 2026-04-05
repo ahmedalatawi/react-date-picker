@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import type { FC } from "react";
+import { useState } from "react";
+import { CodeBlock } from "../components/CodeBlock";
 import { DateTimePicker } from "../../src/components/DateTimePicker/DateTimePicker";
 
-export const Accessibility: React.FC = () => {
+export const Accessibility: FC = () => {
   const [date, setDate] = useState(new Date());
 
   return (
@@ -64,7 +64,7 @@ export const Accessibility: React.FC = () => {
         The component uses appropriate ARIA attributes to ensure screen reader
         compatibility:
       </p>
-      <SyntaxHighlighter language="html" style={oneDark}>
+      <CodeBlock language="html">
         {`<!-- Trigger button -->
 <button
   aria-haspopup="dialog"
@@ -99,7 +99,7 @@ export const Accessibility: React.FC = () => {
     </div>
   </div>
 </div>`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Focus Management</h2>
       <p>
@@ -140,7 +140,7 @@ export const Accessibility: React.FC = () => {
         The component uses the <code>useA11y</code> hook to handle accessibility
         features:
       </p>
-      <SyntaxHighlighter language="typescript" style={oneDark}>
+      <CodeBlock language="typescript">
         {`import { useA11y } from '@atawi/react-date-picker';
 
 function MyDatePicker() {
@@ -167,7 +167,7 @@ function MyDatePicker() {
     </div>
   );
 }`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Best Practices</h2>
       <p>

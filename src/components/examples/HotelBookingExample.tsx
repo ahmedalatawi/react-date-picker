@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import { DateTimePicker } from '../DateTimePicker/DateTimePicker';
-import { generateDisabledDates, getBookedRanges } from '../../utils/dates';
-import { addDays } from 'date-fns';
+import type { FC } from "react";
+import { useState } from "react";
+import { DateTimePicker } from "../DateTimePicker/DateTimePicker";
+import { generateDisabledDates, getBookedRanges } from "../../utils/dates";
+import { addDays } from "date-fns";
 
 const bookedRanges = getBookedRanges();
 const disabledDates = generateDisabledDates(bookedRanges);
 
-export const HotelBookingExample: React.FC = () => {
+export const HotelBookingExample: FC = () => {
   const [dateRange, setDateRange] = useState<[Date, Date]>([
     new Date(),
     addDays(new Date(), 3),

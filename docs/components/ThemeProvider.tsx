@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+import type { ReactNode } from "react";
 import { useTheme } from "../hooks/useTheme";
 
 type ThemeContextType = {
@@ -8,7 +9,7 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+export function ThemeProvider({ children }: { children: ReactNode }) {
   const themeValue = useTheme();
 
   return (

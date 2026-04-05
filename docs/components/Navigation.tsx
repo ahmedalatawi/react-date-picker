@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import type { FC } from "react";
+import { NavLink } from "react-router-dom";
 
 const links = [
   { to: '/', label: 'Home' },
@@ -11,7 +11,7 @@ const links = [
   { to: '/accessibility', label: 'Accessibility' },
 ];
 
-export const Navigation: React.FC = () => {
+export const Navigation: FC = () => {
   return (
     <nav className="w-64 space-y-1">
       {links.map(({ to, label }) => (
