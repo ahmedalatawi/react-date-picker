@@ -1,7 +1,6 @@
 import type { FC } from "react";
 import { useState } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-async-light";
-import oneDark from "react-syntax-highlighter/dist/esm/styles/prism/one-dark";
+import { CodeBlock } from "../components/CodeBlock";
 import { DateTimePicker } from "../../src/components/DateTimePicker/DateTimePicker";
 import { TimePicker } from "../../src/components/TimePicker/TimePicker";
 import { enUS } from "date-fns/locale";
@@ -32,7 +31,7 @@ export const Examples: FC = () => {
           locale={enUS}
         />
       </div>
-      <SyntaxHighlighter language="tsx" style={oneDark}>
+      <CodeBlock language="tsx">
         {`const [date, setDate] = useState(new Date());
 
 <DateTimePicker
@@ -42,7 +41,7 @@ export const Examples: FC = () => {
   showTime
   locale={enUS}
 />`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Date Range Selection</h2>
       <div className="not-prose mb-4">
@@ -54,7 +53,7 @@ export const Examples: FC = () => {
           locale={enUS}
         />
       </div>
-      <SyntaxHighlighter language="tsx" style={oneDark}>
+      <CodeBlock language="tsx">
         {`const [dateRange, setDateRange] = useState<[Date, Date]>([
   new Date(),
   addDays(new Date(), 5)
@@ -67,7 +66,7 @@ export const Examples: FC = () => {
   showTime={false}
   locale={enUS}
 />`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Week Range Selection</h2>
       <div className="not-prose mb-4">
@@ -79,7 +78,7 @@ export const Examples: FC = () => {
           locale={enUS}
         />
       </div>
-      <SyntaxHighlighter language="tsx" style={oneDark}>
+      <CodeBlock language="tsx">
         {`const [weekRange, setWeekRange] = useState<[Date, Date]>([
   startOfWeek(new Date()),
   endOfWeek(new Date())
@@ -92,7 +91,7 @@ export const Examples: FC = () => {
   showTime={false}
   locale={enUS}
 />`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>With Date Notes</h2>
       <div className="not-prose mb-4">
@@ -115,7 +114,7 @@ export const Examples: FC = () => {
           ]}
         />
       </div>
-      <SyntaxHighlighter language="tsx" style={oneDark}>
+      <CodeBlock language="tsx">
         {`const notes = [
   {
     date: new Date(),
@@ -136,7 +135,7 @@ export const Examples: FC = () => {
   locale={enUS}
   notes={notes}
 />`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>With Confirmation</h2>
       <div className="not-prose mb-4">
@@ -158,7 +157,7 @@ export const Examples: FC = () => {
           }
         />
       </div>
-      <SyntaxHighlighter language="tsx" style={oneDark}>
+      <CodeBlock language="tsx">
         {`<DateTimePicker
   value={date}
   onChange={setDate}
@@ -179,7 +178,7 @@ export const Examples: FC = () => {
     </div>
   }
 />`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Standalone Time Picker</h2>
       <div className="not-prose mb-4">
@@ -196,7 +195,7 @@ export const Examples: FC = () => {
           />
         </div>
       </div>
-      <SyntaxHighlighter language="tsx" style={oneDark}>
+      <CodeBlock language="tsx">
         {`import { TimePicker } from '@atawi/react-date-picker';
 
 const [time, setTime] = useState(new Date());
@@ -214,7 +213,7 @@ const [time, setTime] = useState(new Date());
   onChange={setTime}
   use24Hour={true}
 />`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Date Only (No Time)</h2>
       <div className="not-prose mb-4">
@@ -226,7 +225,7 @@ const [time, setTime] = useState(new Date());
           locale={enUS}
         />
       </div>
-      <SyntaxHighlighter language="tsx" style={oneDark}>
+      <CodeBlock language="tsx">
         {`<DateTimePicker
   value={date}
   onChange={setDate}
@@ -234,7 +233,7 @@ const [time, setTime] = useState(new Date());
   showTime={false}
   locale={enUS}
 />`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Dark Mode</h2>
       <div className="not-prose mb-4 bg-gray-900 p-4 rounded-lg">
@@ -247,7 +246,7 @@ const [time, setTime] = useState(new Date());
           locale={enUS}
         />
       </div>
-      <SyntaxHighlighter language="tsx" style={oneDark}>
+      <CodeBlock language="tsx">
         {`<DateTimePicker
   value={date}
   onChange={setDate}
@@ -256,7 +255,7 @@ const [time, setTime] = useState(new Date());
   darkMode={true}
   locale={enUS}
 />`}
-      </SyntaxHighlighter>
+      </CodeBlock>
     </div>
   );
 };

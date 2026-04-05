@@ -1,6 +1,5 @@
 import type { FC } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-async-light";
-import oneDark from "react-syntax-highlighter/dist/esm/styles/prism/one-dark";
+import { CodeBlock } from "../components/CodeBlock";
 
 export const Installation: FC = () => {
   return (
@@ -9,9 +8,9 @@ export const Installation: FC = () => {
 
       <h2>Package Installation</h2>
       <p>Install the package and its peer dependencies:</p>
-      <SyntaxHighlighter language="bash" style={oneDark}>
+      <CodeBlock language="bash">
         npm install @atawi/react-date-picker date-fns
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Setup Options</h2>
 
@@ -20,7 +19,7 @@ export const Installation: FC = () => {
         This library works perfectly without any CSS framework dependencies. It
         includes comprehensive built-in styles:
       </p>
-      <SyntaxHighlighter language="typescript" style={oneDark}>
+      <CodeBlock language="typescript">
         {`import { DateTimePicker } from '@atawi/react-date-picker';
 // No additional CSS imports needed - all styles are included
 
@@ -35,7 +34,7 @@ function App() {
     />
   );
 }`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <p>The built-in styles include:</p>
       <ul>
@@ -57,12 +56,12 @@ function App() {
       <h2>Framework Integration</h2>
 
       <h3>Next.js</h3>
-      <SyntaxHighlighter language="javascript" style={oneDark}>
+      <CodeBlock language="javascript">
         {`// next.config.js
 module.exports = {
   transpilePackages: ['@atawi/react-date-picker'],
 }`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h3>Vite</h3>
       <p>No additional configuration needed. Works out of the box.</p>
@@ -97,13 +96,13 @@ module.exports = {
         The library is tree-shakeable and lightweight. Only import what you
         need:
       </p>
-      <SyntaxHighlighter language="typescript" style={oneDark}>
+      <CodeBlock language="typescript">
         {`// Import only what you need
 import { DateTimePicker } from "@atawi/react-date-picker";
 
 // Or import specific components
 import { TimePicker, Calendar } from "@atawi/react-date-picker";`}
-      </SyntaxHighlighter>
+      </CodeBlock>
     </div>
   );
 };

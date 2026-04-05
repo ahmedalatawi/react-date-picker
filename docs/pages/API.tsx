@@ -1,6 +1,5 @@
 import type { FC } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-async-light";
-import oneDark from "react-syntax-highlighter/dist/esm/styles/prism/one-dark";
+import { CodeBlock } from "../components/CodeBlock";
 
 export const API: FC = () => {
   return (
@@ -420,7 +419,7 @@ export const API: FC = () => {
       <h4>DateNoteType</h4>
       <p>Type for adding notes to specific dates or date ranges.</p>
 
-      <SyntaxHighlighter language="typescript" style={oneDark}>
+      <CodeBlock language="typescript">
         {`type DateNote = {
   date: Date;
   note: string;
@@ -433,12 +432,12 @@ type DateRangeNote = {
 };
 
 type DateNoteType = DateNote | DateRangeNote;`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h4>StyleProps</h4>
       <p>Type for customizing component styles.</p>
 
-      <SyntaxHighlighter language="typescript" style={oneDark}>
+      <CodeBlock language="typescript">
         {`interface StyleProps {
   containerClassName?: string;
   triggerClassName?: string;
@@ -449,25 +448,25 @@ type DateNoteType = DateNote | DateRangeNote;`}
   timePickerClassName?: string;
   showTooltips?: boolean;
 }`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h4>TimePickerStyleProps</h4>
       <p>Type for customizing TimePicker styles.</p>
 
-      <SyntaxHighlighter language="typescript" style={oneDark}>
+      <CodeBlock language="typescript">
         {`interface TimePickerStyleProps {
   containerClassName?: string;
   triggerClassName?: string;
   popoverClassName?: string;
 }`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h3>Hooks</h3>
 
       <h4>useA11y</h4>
       <p>Hook for handling accessibility features.</p>
 
-      <SyntaxHighlighter language="typescript" style={oneDark}>
+      <CodeBlock language="typescript">
         {`function useA11y(
   isOpen: boolean,
   onClose: () => void,
@@ -478,18 +477,18 @@ type DateNoteType = DateNote | DateRangeNote;`}
   'aria-modal': boolean;
   'aria-label': string;
 }`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h4>useKeyboardNavigation</h4>
       <p>Hook for handling keyboard navigation in the calendar.</p>
 
-      <SyntaxHighlighter language="typescript" style={oneDark}>
+      <CodeBlock language="typescript">
         {`function useKeyboardNavigation(
   currentDate: Date,
   onDateSelect: (date: Date) => void,
   onMonthChange: (date: Date) => void
 ): (event: React.KeyboardEvent) => void`}
-      </SyntaxHighlighter>
+      </CodeBlock>
     </div>
   );
 };

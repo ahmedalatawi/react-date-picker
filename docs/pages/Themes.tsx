@@ -1,7 +1,6 @@
 import type { FC } from "react";
 import { useState } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-async-light";
-import oneDark from "react-syntax-highlighter/dist/esm/styles/prism/one-dark";
+import { CodeBlock } from "../components/CodeBlock";
 import { DateTimePicker } from "../../src/components/DateTimePicker/DateTimePicker";
 import { addDays } from "date-fns";
 
@@ -66,7 +65,7 @@ export const Themes: FC = () => {
           styles={modernTheme}
         />
       </div>
-      <SyntaxHighlighter language="typescript" style={oneDark}>
+      <CodeBlock language="typescript">
         {`const modernTheme = {
   containerClassName: 'modern-picker',
   triggerClassName: 'modern-trigger',
@@ -76,7 +75,7 @@ export const Themes: FC = () => {
   rangeClassName: 'modern-range',
   timePickerClassName: 'modern-time',
 };`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Material Theme</h2>
       <div className="not-prose mb-4">
@@ -86,7 +85,7 @@ export const Themes: FC = () => {
           styles={materialTheme}
         />
       </div>
-      <SyntaxHighlighter language="typescript" style={oneDark}>
+      <CodeBlock language="typescript">
         {`const materialTheme = {
   containerClassName: 'material-picker',
   triggerClassName: 'material-trigger',
@@ -95,7 +94,7 @@ export const Themes: FC = () => {
   selectedDayClassName: 'material-selected',
   timePickerClassName: 'material-time',
 };`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Gradient Theme</h2>
       <div className="not-prose mb-4">
@@ -107,7 +106,7 @@ export const Themes: FC = () => {
           styles={gradientTheme}
         />
       </div>
-      <SyntaxHighlighter language="typescript" style={oneDark}>
+      <CodeBlock language="typescript">
         {`const gradientTheme = {
   containerClassName: 'gradient-picker',
   triggerClassName: 'gradient-trigger',
@@ -117,7 +116,7 @@ export const Themes: FC = () => {
   rangeClassName: 'gradient-range',
   timePickerClassName: 'gradient-time',
 };`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Hotel Booking Theme</h2>
       <div className="not-prose mb-4">
@@ -129,7 +128,7 @@ export const Themes: FC = () => {
           styles={hotelTheme}
         />
       </div>
-      <SyntaxHighlighter language="typescript" style={oneDark}>
+      <CodeBlock language="typescript">
         {`const hotelTheme = {
   containerClassName: 'hotel-picker',
   triggerClassName: 'hotel-trigger',
@@ -138,7 +137,7 @@ export const Themes: FC = () => {
   selectedDayClassName: 'hotel-selected',
   rangeClassName: 'hotel-range',
 };`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h2>Custom Themes</h2>
       <p>
@@ -180,7 +179,7 @@ export const Themes: FC = () => {
         component's appearance using standard CSS.
       </p>
 
-      <SyntaxHighlighter language="typescript" style={oneDark}>
+      <CodeBlock language="typescript">
         {`// Example: Custom theme using CSS classes
 const brandTheme = {
   triggerClassName: 'my-brand-trigger',
@@ -189,10 +188,10 @@ const brandTheme = {
   selectedDayClassName: 'my-brand-selected',
   rangeClassName: 'my-brand-range',
 };`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <p>Then add your custom CSS:</p>
-      <SyntaxHighlighter language="css" style={oneDark}>
+      <CodeBlock language="css">
         {`.my-brand-trigger {
   background: white;
   border: 2px solid #e5e7eb;
@@ -213,7 +212,7 @@ const brandTheme = {
 .my-brand-selected:hover {
   background: #2563eb;
 };`}
-      </SyntaxHighlighter>
+      </CodeBlock>
 
       <h3>Dark Mode Support</h3>
       <p>
@@ -222,7 +221,7 @@ const brandTheme = {
         styling:
       </p>
 
-      <SyntaxHighlighter language="typescript" style={oneDark}>
+      <CodeBlock language="typescript">
         {`// Enable dark mode with prop
 <DateTimePicker
   value={date}
@@ -236,7 +235,7 @@ const brandTheme = {
     /* Dark mode styles applied automatically */
   }
 }`}
-      </SyntaxHighlighter>
+      </CodeBlock>
     </div>
   );
 };
