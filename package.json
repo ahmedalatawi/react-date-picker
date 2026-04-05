@@ -1,13 +1,24 @@
 {
   "name": "@atawi/react-date-picker",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A beautiful, customizable date and time picker component for React with multiple themes and localization support",
   "private": false,
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "style": "dist/style.css",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "dist",
     "README.md",

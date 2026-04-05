@@ -34,9 +34,10 @@ npm install @atawi/react-date-picker
 
 ## Setup
 
-The library works out of the box with comprehensive built-in styles. Simply import the component and start using it:
+Import the package stylesheet once in your app entry, then import components:
 
 ```tsx
+import "@atawi/react-date-picker/style.css";
 import { DateTimePicker } from "@atawi/react-date-picker";
 
 function App() {
@@ -58,6 +59,7 @@ The library includes comprehensive built-in styles that provide:
 ## Basic Usage
 
 ```tsx
+import "@atawi/react-date-picker/style.css";
 import { DateTimePicker } from "@atawi/react-date-picker";
 
 function App() {
@@ -189,6 +191,7 @@ const [isOpen, setIsOpen] = useState(false);
 ### Standalone Time Picker
 
 ```tsx
+import "@atawi/react-date-picker/style.css";
 import { TimePicker } from "@atawi/react-date-picker";
 
 const [time, setTime] = useState(new Date());

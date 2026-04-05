@@ -32,7 +32,10 @@ export const Examples: FC = () => {
         />
       </div>
       <CodeBlock language="tsx">
-        {`const [date, setDate] = useState(new Date());
+        {`import '@atawi/react-date-picker/style.css';
+import { DateTimePicker } from '@atawi/react-date-picker';
+
+const [date, setDate] = useState(new Date());
 
 <DateTimePicker
   value={date}
@@ -196,7 +199,8 @@ export const Examples: FC = () => {
         </div>
       </div>
       <CodeBlock language="tsx">
-        {`import { TimePicker } from '@atawi/react-date-picker';
+        {`import '@atawi/react-date-picker/style.css';
+import { TimePicker } from '@atawi/react-date-picker';
 
 const [time, setTime] = useState(new Date());
 

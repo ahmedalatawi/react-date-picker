@@ -6,6 +6,16 @@ export const API: FC = () => {
     <div className="prose dark:prose-invert max-w-none">
       <h1>API Reference</h1>
 
+      <h2>Required CSS Import</h2>
+      <p>
+        Import the package stylesheet once in your app entry to enable default
+        component styling.
+      </p>
+      <CodeBlock language="tsx">
+        {`import '@atawi/react-date-picker/style.css';
+import { DateTimePicker } from '@atawi/react-date-picker';`}
+      </CodeBlock>
+
       <h2>Components</h2>
 
       <h3>DateTimePicker</h3>

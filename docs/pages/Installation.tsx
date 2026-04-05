@@ -9,19 +9,19 @@ export const Installation: FC = () => {
       <h2>Package Installation</h2>
       <p>Install the package and its peer dependencies:</p>
       <CodeBlock language="bash">
-        npm install @atawi/react-date-picker date-fns
+        npm install @atawi/react-date-picker
       </CodeBlock>
 
       <h2>Setup Options</h2>
 
-      <h3>Works Out of the Box</h3>
+      <h3>Import Default Styles</h3>
       <p>
-        This library works perfectly without any CSS framework dependencies. It
-        includes comprehensive built-in styles:
+        This library does not require a CSS framework. Import the exported
+        stylesheet once to enable the default styles:
       </p>
       <CodeBlock language="typescript">
-        {`import { DateTimePicker } from '@atawi/react-date-picker';
-// No additional CSS imports needed - all styles are included
+        {`import '@atawi/react-date-picker/style.css';
+import { DateTimePicker } from '@atawi/react-date-picker';
 
 function App() {
   const [date, setDate] = useState(new Date());
