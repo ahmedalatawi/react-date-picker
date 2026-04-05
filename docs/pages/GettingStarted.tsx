@@ -9,19 +9,22 @@ export const GettingStarted: FC = () => {
 
       <h2>Installation</h2>
       <CodeBlock language="bash">
-        npm install @atawi/react-date-picker date-fns
+        npm install @atawi/react-date-picker
       </CodeBlock>
 
-      <h2>No Setup Required</h2>
+      <h2>Style Import Required</h2>
       <p>
-        The library works out of the box with comprehensive built-in styles. No
-        CSS framework dependencies required:
+        Import the package stylesheet once in your app entry so the components
+        render with their default styles:
       </p>
+      <CodeBlock language="tsx">
+        {`import '@atawi/react-date-picker/style.css';`}
+      </CodeBlock>
 
       <h2>Basic Usage</h2>
       <CodeBlock language="tsx">
-        {`import { DateTimePicker } from '@atawi/react-date-picker';
-import { enUS } from "date-fns/locale";
+        {`import '@atawi/react-date-picker/style.css';
+import { DateTimePicker } from '@atawi/react-date-picker';
 
 function App() {
   const [date, setDate] = useState(new Date());
@@ -30,7 +33,6 @@ function App() {
     <DateTimePicker
       value={date}
       onChange={setDate}
-      locale={enUS}
       showTime
     />
   );
