@@ -1,6 +1,6 @@
 {
   "name": "@atawi/react-date-picker",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A beautiful, customizable date and time picker component for React with multiple themes and localization support",
   "private": false,
   "type": "module",
