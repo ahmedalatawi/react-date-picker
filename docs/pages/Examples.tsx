@@ -3,7 +3,7 @@ import { useState } from "react";
 import { CodeBlock } from "../components/CodeBlock";
 import { DateTimePicker } from "../../src/components/DateTimePicker/DateTimePicker";
 import { TimePicker } from "../../src/components/TimePicker/TimePicker";
-import { enUS } from "date-fns/locale";
+import { enUS, fr } from "date-fns/locale";
 import { addDays, startOfWeek, endOfWeek } from "date-fns";
 
 export const Examples: FC = () => {
@@ -20,6 +20,10 @@ export const Examples: FC = () => {
   return (
     <div className="prose dark:prose-invert">
       <h1>Examples</h1>
+      <p>
+        Import <code>@atawi/react-date-picker/style.css</code> once in your app
+        entry before using the components below.
+      </p>
 
       <h2>Single Date Selection</h2>
       <div className="not-prose mb-4">
@@ -43,6 +47,32 @@ const [date, setDate] = useState(new Date());
   mode="single"
   showTime
   locale={enUS}
+/>`}
+      </CodeBlock>
+
+      <h2>Locale Example (French)</h2>
+      <div className="not-prose mb-4">
+        <DateTimePicker
+          value={singleDate}
+          onChange={(date) => setSingleDate(date as Date)}
+          mode="single"
+          showTime
+          locale={fr}
+        />
+      </div>
+      <CodeBlock language="tsx">
+        {`import '@atawi/react-date-picker/style.css';
+import { DateTimePicker } from '@atawi/react-date-picker';
+import { fr } from 'date-fns/locale';
+
+const [date, setDate] = useState(new Date());
+
+<DateTimePicker
+  value={date}
+  onChange={setDate}
+  mode="single"
+  showTime
+  locale={fr}
 />`}
       </CodeBlock>
 

@@ -97,8 +97,11 @@ module.exports = {
         need:
       </p>
       <CodeBlock language="typescript">
-        {`// Import only what you need
-import { DateTimePicker } from "@atawi/react-date-picker";
+        {`// Import stylesheet once in your app entry
+      import "@atawi/react-date-picker/style.css";
+
+      // Import only what you need
+      import { DateTimePicker } from "@atawi/react-date-picker";
 
 // Or import specific components
 import { TimePicker, Calendar } from "@atawi/react-date-picker";`}
