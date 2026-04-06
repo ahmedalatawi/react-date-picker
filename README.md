@@ -37,8 +37,9 @@ npm install @atawi/react-date-picker
 Import the package stylesheet once in your app entry, then import components:
 
 ```tsx
-import "@atawi/react-date-picker/style.css";
 import { DateTimePicker } from "@atawi/react-date-picker";
+
+import "@atawi/react-date-picker/style.css";
 
 function App() {
   const [date, setDate] = useState(new Date());
@@ -59,13 +60,33 @@ The library includes comprehensive built-in styles that provide:
 ## Basic Usage
 
 ```tsx
-import "@atawi/react-date-picker/style.css";
 import { DateTimePicker } from "@atawi/react-date-picker";
+
+import "@atawi/react-date-picker/style.css";
 
 function App() {
   const [date, setDate] = useState(new Date());
 
   return <DateTimePicker value={date} onChange={setDate} showTime />;
+}
+```
+
+### Locale Example (date-fns)
+
+Use a locale from `date-fns/locale` and pass it through the `locale` prop:
+
+```tsx
+import { useState } from "react";
+import { DateTimePicker } from "@atawi/react-date-picker";
+import { fr } from "date-fns/locale";
+import "@atawi/react-date-picker/style.css";
+
+function App() {
+  const [date, setDate] = useState(new Date());
+
+  return (
+    <DateTimePicker value={date} onChange={setDate} showTime locale={fr} />
+  );
 }
 ```
 
@@ -191,8 +212,9 @@ const [isOpen, setIsOpen] = useState(false);
 ### Standalone Time Picker
 
 ```tsx
-import "@atawi/react-date-picker/style.css";
 import { TimePicker } from "@atawi/react-date-picker";
+
+import "@atawi/react-date-picker/style.css";
 
 const [time, setTime] = useState(new Date());
 
