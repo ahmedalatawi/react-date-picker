@@ -12,8 +12,9 @@ export const API: FC = () => {
         component styling.
       </p>
       <CodeBlock language="tsx">
-        {`import '@atawi/react-date-picker/style.css';
-import { DateTimePicker } from '@atawi/react-date-picker';`}
+        {`import { DateTimePicker } from '@atawi/react-date-picker';
+import '@atawi/react-date-picker/style.css';
+`}
       </CodeBlock>
 
       <h2>Components</h2>

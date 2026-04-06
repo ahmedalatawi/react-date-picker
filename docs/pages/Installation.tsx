@@ -20,11 +20,13 @@ export const Installation: FC = () => {
         stylesheet once to enable the default styles:
       </p>
       <CodeBlock language="typescript">
-        {`import '@atawi/react-date-picker/style.css';
+        {`
 import { DateTimePicker } from '@atawi/react-date-picker';
 
+import '@atawi/react-date-picker/style.css';
+
 function App() {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState<Date | [Date, Date]>(new Date());
 
   return (
     <DateTimePicker

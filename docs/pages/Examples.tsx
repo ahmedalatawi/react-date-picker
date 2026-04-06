@@ -36,10 +36,12 @@ export const Examples: FC = () => {
         />
       </div>
       <CodeBlock language="tsx">
-        {`import '@atawi/react-date-picker/style.css';
+        {`
 import { DateTimePicker } from '@atawi/react-date-picker';
 
-const [date, setDate] = useState(new Date());
+import '@atawi/react-date-picker/style.css';
+
+const [date, setDate] = useState<Date | [Date, Date]>(new Date());
 
 <DateTimePicker
   value={date}
@@ -61,11 +63,13 @@ const [date, setDate] = useState(new Date());
         />
       </div>
       <CodeBlock language="tsx">
-        {`import '@atawi/react-date-picker/style.css';
+        {`
 import { DateTimePicker } from '@atawi/react-date-picker';
 import { fr } from 'date-fns/locale';
 
-const [date, setDate] = useState(new Date());
+import '@atawi/react-date-picker/style.css';
+
+const [date, setDate] = useState<Date | [Date, Date]>(new Date());
 
 <DateTimePicker
   value={date}
@@ -87,7 +91,7 @@ const [date, setDate] = useState(new Date());
         />
       </div>
       <CodeBlock language="tsx">
-        {`const [dateRange, setDateRange] = useState<[Date, Date]>([
+        {`const [dateRange, setDateRange] = useState<Date | [Date, Date]>([
   new Date(),
   addDays(new Date(), 5)
 ]);
@@ -112,7 +116,7 @@ const [date, setDate] = useState(new Date());
         />
       </div>
       <CodeBlock language="tsx">
-        {`const [weekRange, setWeekRange] = useState<[Date, Date]>([
+        {`const [weekRange, setWeekRange] = useState<Date | [Date, Date]>([
   startOfWeek(new Date()),
   endOfWeek(new Date())
 ]);
@@ -229,10 +233,12 @@ const [date, setDate] = useState(new Date());
         </div>
       </div>
       <CodeBlock language="tsx">
-        {`import '@atawi/react-date-picker/style.css';
+        {`
 import { TimePicker } from '@atawi/react-date-picker';
 
-const [time, setTime] = useState(new Date());
+import '@atawi/react-date-picker/style.css';
+
+const [time, setTime] = useState<Date | [Date, Date]>(new Date());
 
 // 12-hour format
 <TimePicker

@@ -42,7 +42,7 @@ import { DateTimePicker } from "@atawi/react-date-picker";
 import "@atawi/react-date-picker/style.css";
 
 function App() {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState<Date | [Date, Date]>(new Date());
 
   return <DateTimePicker value={date} onChange={setDate} showTime />;
 }
@@ -65,7 +65,7 @@ import { DateTimePicker } from "@atawi/react-date-picker";
 import "@atawi/react-date-picker/style.css";
 
 function App() {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState<Date | [Date, Date]>(new Date());
 
   return <DateTimePicker value={date} onChange={setDate} showTime />;
 }
@@ -82,7 +82,7 @@ import { fr } from "date-fns/locale";
 import "@atawi/react-date-picker/style.css";
 
 function App() {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState<Date | [Date, Date]>(new Date());
 
   return (
     <DateTimePicker value={date} onChange={setDate} showTime locale={fr} />
@@ -116,7 +116,7 @@ function App() {
 ### Date Range Selection
 
 ```tsx
-const [dateRange, setDateRange] = useState<[Date, Date]>([
+const [dateRange, setDateRange] = useState<Date | [Date, Date]>([
   new Date(),
   addDays(new Date(), 5),
 ]);
@@ -132,7 +132,7 @@ const [dateRange, setDateRange] = useState<[Date, Date]>([
 ### Week Range Selection
 
 ```tsx
-const [weekRange, setWeekRange] = useState<[Date, Date]>([
+const [weekRange, setWeekRange] = useState<Date | [Date, Date]>([
   startOfWeek(new Date()),
   endOfWeek(new Date()),
 ]);
@@ -216,7 +216,7 @@ import { TimePicker } from "@atawi/react-date-picker";
 
 import "@atawi/react-date-picker/style.css";
 
-const [time, setTime] = useState(new Date());
+const [time, setTime] = useState<Date | [Date, Date]>(new Date());
 
 <TimePicker value={time} onChange={setTime} use24Hour={false} />;
 ```

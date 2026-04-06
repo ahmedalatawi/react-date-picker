@@ -23,11 +23,13 @@ export const GettingStarted: FC = () => {
 
       <h2>Basic Usage</h2>
       <CodeBlock language="tsx">
-        {`import '@atawi/react-date-picker/style.css';
+        {`
 import { DateTimePicker } from '@atawi/react-date-picker';
 
+import '@atawi/react-date-picker/style.css';
+
 function App() {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState<Date | [Date, Date]>(new Date());
 
   return (
     <DateTimePicker
