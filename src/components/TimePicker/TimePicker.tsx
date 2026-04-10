@@ -88,6 +88,7 @@ export const TimePicker: FC<TimePickerProps> = ({
       <Popover
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
+        contentClassName={`time-picker-popover-surface ${darkMode ? "dark-mode" : ""}`}
         portalClassName={`time-picker ${darkMode ? "dark-mode" : ""} ${
           styles?.containerClassName || ""
         } ${className}`}

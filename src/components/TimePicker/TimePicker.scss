@@ -1,3 +1,15 @@
+.time-picker-popover-surface.dark-mode {
+  background: #1f2937;
+  border-color: #374151;
+  color: #f9fafb;
+}
+
+.time-picker-popover-surface.dark-mode::before,
+.time-picker-popover-surface.dark-mode::after {
+  background: #1f2937;
+  border-color: #374151;
+}
+
 .time-picker {
   .time-picker-trigger {
     display: inline-flex;
