@@ -26,13 +26,7 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      external: [
-        "react",
-        "react-dom",
-        "date-fns",
-        "@popperjs/core",
-        "react-popper",
-      ],
+      external: ["react", "react-dom", "date-fns", "@atawi/react-popover"],
       output: {
         globals: {
           react: "React",
