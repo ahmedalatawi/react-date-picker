@@ -152,6 +152,10 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
       <Popover
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
+        contentClassName={`date-time-picker-popover-surface ${darkMode ? "dark-mode" : ""}`}
+        portalClassName={`date-time-picker ${darkMode ? "dark-mode" : ""} ${
+          styles?.containerClassName || ""
+        } ${className}`}
         content={
           <div
             ref={contentRef}

@@ -1,66 +1,38 @@
-import * as React from "react";
 import type { FC, ReactNode } from "react";
-import { usePopper } from "react-popper";
+import { Popover as BasePopover } from "@atawi/react-popover";
+import "@atawi/react-popover/dist/style.css";
 
 interface PopoverProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
   content: ReactNode;
+  portalClassName?: string;
+  contentClassName?: string;
 }
 
-export const Popover: FC<PopoverProps> = ({ isOpen, onClose, children, content }) => {
-  const [referenceElement, setReferenceElement] = React.useState<HTMLDivElement | null>(null);
-  const [popperElement, setPopperElement] = React.useState<HTMLDivElement | null>(null);
-  
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
-    placement: 'bottom-start',
-    modifiers: [
-      {
-        name: 'offset',
-        options: {
-          offset: [0, 8],
-        },
-      },
-    ],
-  });
-
-  React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        popperElement && 
-        !popperElement.contains(event.target as Node) && 
-        referenceElement && 
-        !referenceElement.contains(event.target as Node)
-      ) {
-        onClose();
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpen, onClose, popperElement, referenceElement]);
-
+export const Popover: FC<PopoverProps> = ({
+  isOpen,
+  onClose,
+  children,
+  content,
+  portalClassName = "",
+  contentClassName = "",
+}) => {
   return (
-    <>
-      <div ref={setReferenceElement}>
-        {children}
-      </div>
-      {isOpen && (
-        <div
-          ref={setPopperElement}
-          style={styles.popper}
-          {...attributes.popper}
-          className="z-50"
-        >
-          {content}
-        </div>
-      )}
-    </>
+    <BasePopover
+      trigger={children}
+      contentClassName={contentClassName}
+      content={<div className={portalClassName}>{content}</div>}
+      open={isOpen}
+      onOpenChange={(open: boolean) => {
+        if (!open) {
+          onClose();
+        }
+      }}
+      placement="bottom-start"
+      autoPlacement
+      triggerType="click"
+    />
   );
 };

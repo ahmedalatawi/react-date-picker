@@ -40,7 +40,21 @@ describe("Popover", () => {
 
   it("positions content relative to trigger", () => {
     render(<Popover {...defaultProps} />);
-    const content = screen.getByText("Popover Content");
-    expect(content.parentElement).toHaveStyle({ position: "absolute" });
+    expect(screen.getByTestId("popover-content")).toHaveStyle({
+      position: "fixed",
+    });
+  });
+
+  it("applies portal scope classes around content", () => {
+    render(
+      <Popover
+        {...defaultProps}
+        portalClassName="date-time-picker notes-picker"
+      />,
+    );
+    expect(screen.getByText("Popover Content").parentElement).toHaveClass(
+      "date-time-picker",
+      "notes-picker",
+    );
   });
 });
