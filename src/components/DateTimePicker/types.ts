@@ -25,6 +25,7 @@ export interface DateTimePickerProps {
   locale?: Locale;
   notes?: DateNoteType[];
   onDateHover?: (date: Date | null) => void;
+  showTooltip?: boolean;
   isOpen?: boolean;
   onOpenChange?: (isOpen: boolean) => void;
   footer?: ReactNode;

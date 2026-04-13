@@ -33,6 +33,7 @@ interface CalendarProps {
   styles?: StyleProps;
   notes?: DateNoteType[];
   darkMode?: boolean;
+  showTooltip?: boolean;
 }
 
 export const Calendar: FC<CalendarProps> = ({
@@ -52,6 +53,7 @@ export const Calendar: FC<CalendarProps> = ({
   styles = {},
   notes = [],
   darkMode = false,
+  showTooltip = false,
 }) => {
   const [viewMode, setViewMode] = useState<"days" | "months" | "years">("days");
   const [hoveredEndDate, setHoveredEndDate] = useState<Date | null>(null);
@@ -96,7 +98,7 @@ export const Calendar: FC<CalendarProps> = ({
     });
   };
 
-  const getNightsCount = (start: Date, end: Date) => {
+  const getDaysCount = (start: Date, end: Date) => {
     return Math.abs(differenceInDays(start, end));
   };
 
@@ -104,8 +106,8 @@ export const Calendar: FC<CalendarProps> = ({
     if (!selectedRange[0]) return "";
     const endDate = selectedRange[1] || hoverDate;
     if (!endDate) return "";
-    const nights = getNightsCount(selectedRange[0], endDate);
-    return `${nights} night${nights !== 1 ? "s" : ""}`;
+    const days = getDaysCount(selectedRange[0], endDate);
+    return `${days} day${days !== 1 ? "s" : ""}`;
   };
 
   const handleDateHover = (date: Date) => {
@@ -220,11 +222,7 @@ export const Calendar: FC<CalendarProps> = ({
             {day}
             {hasNoteIndicator && <span className="note-indicator" />}
           </button>
-          {shouldShowTooltip && tooltipText && (
-            // <div className="tooltip">
-            //   {tooltipText}
-            //   <div className="tooltip-arrow" />
-            // </div>
+          {shouldShowTooltip && tooltipText && showTooltip && (
             <Tooltip content={tooltipText} />
           )}
         </div>

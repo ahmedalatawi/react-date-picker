@@ -39,6 +39,7 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
   locale,
   styles = defaultStyles,
   notes = [],
+  showTooltip = false,
   onDateHover,
   isOpen: controlledIsOpen,
   onOpenChange,
@@ -185,6 +186,7 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
               }
               locale={locale}
               notes={notes}
+              showTooltip={showTooltip}
               styles={styles}
               darkMode={darkMode}
             />
