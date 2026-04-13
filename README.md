@@ -276,6 +276,7 @@ Then style with CSS:
 | `onOpenChange`  | `(isOpen: boolean) => void`            | `undefined`  | Callback when open state changes |
 | `footer`        | `React.ReactNode`                      | `undefined`  | Custom footer content            |
 | `styles`        | `StyleProps`                           | `{}`         | Custom style classes             |
+| `showTooltip`   | `boolean`                              | `false`      | Enable tooltips in calendar      |
 
 ### TimePicker Props
 

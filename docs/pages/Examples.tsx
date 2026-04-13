@@ -88,6 +88,7 @@ const [date, setDate] = useState<Date | [Date, Date]>(new Date());
           mode="range"
           showTime={false}
           locale={enUS}
+          showTooltip
         />
       </div>
       <CodeBlock language="tsx">
@@ -102,6 +103,7 @@ const [date, setDate] = useState<Date | [Date, Date]>(new Date());
   mode="range"
   showTime={false}
   locale={enUS}
+  showTooltip
 />`}
       </CodeBlock>
 

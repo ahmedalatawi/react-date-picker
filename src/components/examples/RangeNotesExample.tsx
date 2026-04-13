@@ -46,6 +46,7 @@ export const RangeNotesExample: FC = () => {
         styles={rangeNotesTheme}
         notes={sampleRangeNotes}
         onDateHover={setHoveredDate}
+        showTooltip
       />
       <div style={{ fontSize: "0.875rem", color: "#6b7280" }}>
         Select or hover over date ranges with indicators to see notes
