@@ -7,6 +7,10 @@ import {
   endOfDay,
   isSameDay,
   differenceInDays,
+  isBefore,
+  isAfter,
+  startOfMonth,
+  endOfMonth,
   Locale,
 } from "date-fns";
 import { ChevronLeftIcon, ChevronRightIcon } from "../icons";
@@ -23,6 +27,8 @@ interface CalendarProps {
   hoverDate?: Date | null;
   mode: "single" | "range" | "week";
   disabledDates: Date[];
+  minDate?: Date;
+  maxDate?: Date;
   locale?: Locale;
   onDateClick: (date: Date) => void;
   onDateHover?: (date: Date | null) => void;
@@ -43,6 +49,8 @@ export const Calendar: FC<CalendarProps> = ({
   hoverDate,
   mode,
   disabledDates,
+  minDate,
+  maxDate,
   locale,
   onDateClick,
   onDateHover,
@@ -72,8 +80,34 @@ export const Calendar: FC<CalendarProps> = ({
     }
   };
 
+  const isDateOutOfBounds = (date: Date): boolean => {
+    const day = startOfDay(date);
+    if (minDate && isBefore(day, startOfDay(minDate))) return true;
+    if (maxDate && isAfter(day, startOfDay(maxDate))) return true;
+    return false;
+  };
+
   const isDateDisabled = (date: Date) => {
+    if (isDateOutOfBounds(date)) return true;
     return disabledDates.some((disabledDate) => isSameDay(date, disabledDate));
+  };
+
+  const isPrevMonthDisabled = (): boolean => {
+    if (!minDate) return false;
+    const firstOfCurrentMonth = startOfMonth(currentDate);
+    return (
+      isBefore(firstOfCurrentMonth, startOfMonth(minDate)) ||
+      isSameDay(startOfMonth(firstOfCurrentMonth), startOfMonth(minDate))
+    );
+  };
+
+  const isNextMonthDisabled = (): boolean => {
+    if (!maxDate) return false;
+    const lastOfCurrentMonth = endOfMonth(currentDate);
+    return (
+      isAfter(lastOfCurrentMonth, endOfMonth(maxDate)) ||
+      isSameDay(endOfMonth(lastOfCurrentMonth), endOfMonth(maxDate))
+    );
   };
 
   const isDateInRange = (date: Date) => {
@@ -245,17 +279,36 @@ export const Calendar: FC<CalendarProps> = ({
     );
   };
 
+  const isMonthDisabled = (month: number): boolean => {
+    const year = currentDate.getFullYear();
+    const monthEnd = endOfDay(new Date(year, month + 1, 0));
+    const monthStart = startOfDay(new Date(year, month, 1));
+    if (minDate && isBefore(monthEnd, startOfDay(minDate))) return true;
+    if (maxDate && isAfter(monthStart, startOfDay(maxDate))) return true;
+    return false;
+  };
+
+  const isYearDisabled = (year: number): boolean => {
+    const yearEnd = endOfDay(new Date(year, 11, 31));
+    const yearStart = startOfDay(new Date(year, 0, 1));
+    if (minDate && isBefore(yearEnd, startOfDay(minDate))) return true;
+    if (maxDate && isAfter(yearStart, startOfDay(maxDate))) return true;
+    return false;
+  };
+
   const renderMonths = () => (
     <div className="calendar-months">
       {months.map((month) => {
         const date = new Date(2024, month);
+        const disabled = isMonthDisabled(month);
         return (
           <button
             key={month}
             type="button"
             className={`calendar-month ${
               month === currentDate.getMonth() ? "selected" : ""
-            }`}
+            }${disabled ? " disabled" : ""}`}
+            disabled={disabled}
             onClick={() => {
               onMonthSelect(month);
               setViewMode("days");
@@ -270,21 +323,25 @@ export const Calendar: FC<CalendarProps> = ({
 
   const renderYears = () => (
     <div className="calendar-years">
-      {years.map((year) => (
-        <button
-          key={year}
-          type="button"
-          className={`calendar-year ${
-            year === currentDate.getFullYear() ? "selected" : ""
-          }`}
-          onClick={() => {
-            onYearSelect(year);
-            setViewMode("months");
-          }}
-        >
-          {year}
-        </button>
-      ))}
+      {years.map((year) => {
+        const disabled = isYearDisabled(year);
+        return (
+          <button
+            key={year}
+            type="button"
+            className={`calendar-year ${
+              year === currentDate.getFullYear() ? "selected" : ""
+            }${disabled ? " disabled" : ""}`}
+            disabled={disabled}
+            onClick={() => {
+              onYearSelect(year);
+              setViewMode("months");
+            }}
+          >
+            {year}
+          </button>
+        );
+      })}
     </div>
   );
 
@@ -296,6 +353,7 @@ export const Calendar: FC<CalendarProps> = ({
           onClick={onPrevMonth}
           type="button"
           aria-label="Previous month"
+          disabled={isPrevMonthDisabled()}
         >
           <ChevronLeftIcon size={20} />
         </button>
@@ -320,6 +378,7 @@ export const Calendar: FC<CalendarProps> = ({
           onClick={onNextMonth}
           type="button"
           aria-label="Next month"
+          disabled={isNextMonthDisabled()}
         >
           <ChevronRightIcon size={20} />
         </button>

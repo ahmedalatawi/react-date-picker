@@ -8,6 +8,9 @@ import {
   setYear,
   startOfWeek,
   endOfWeek,
+  isBefore,
+  isAfter,
+  startOfDay,
 } from "date-fns";
 import { Popover } from "./Popover";
 import { Calendar } from "./Calendar";
@@ -36,6 +39,8 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
   use24Hour = false,
   disabled = false,
   disabledDates = [],
+  minDate,
+  maxDate,
   locale,
   styles = defaultStyles,
   notes = [],
@@ -76,12 +81,21 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
     contentRef,
   );
 
+  const isDateOutOfBounds = (date: Date): boolean => {
+    const day = startOfDay(date);
+    if (minDate && isBefore(day, startOfDay(minDate))) return true;
+    if (maxDate && isAfter(day, startOfDay(maxDate))) return true;
+    return false;
+  };
+
   const handleDateHover = (date: Date | null) => {
     setHoverDate(date);
     if (onDateHover) onDateHover(date);
   };
 
   const handleDateClick = (date: Date) => {
+    if (isDateOutOfBounds(date)) return;
+
     if (mode === "single") {
       const newDate = new Date(date);
       if (value instanceof Date) {
@@ -174,6 +188,8 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
               hoverDate={hoverDate}
               mode={mode}
               disabledDates={disabledDates}
+              minDate={minDate}
+              maxDate={maxDate}
               onDateClick={handleDateClick}
               onDateHover={handleDateHover}
               onPrevMonth={() => setCurrentDate(subMonths(currentDate, 1))}

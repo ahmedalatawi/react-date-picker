@@ -21,6 +21,8 @@ export interface DateTimePickerProps {
   use24Hour?: boolean;
   disabled?: boolean;
   disabledDates?: Date[];
+  minDate?: Date;
+  maxDate?: Date;
   styles?: StyleProps;
   locale?: Locale;
   notes?: DateNoteType[];

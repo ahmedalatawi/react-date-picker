@@ -256,27 +256,44 @@ Then style with CSS:
 }
 ```
 
+### With Min/Max Date Constraints
+
+```tsx
+import { addDays, subDays } from "date-fns";
+
+<DateTimePicker
+  value={date}
+  onChange={setDate}
+  mode="single"
+  showTime={false}
+  minDate={subDays(new Date(), 3)}
+  maxDate={addDays(new Date(), 30)}
+/>;
+```
+
 ## Props API
 
 ### DateTimePicker Props
 
-| Prop            | Type                                   | Default      | Description                      |
-| --------------- | -------------------------------------- | ------------ | -------------------------------- |
-| `value`         | `Date \| [Date, Date]`                 | `new Date()` | Selected date or date range      |
-| `onChange`      | `(date: Date \| [Date, Date]) => void` | Required     | Callback when date changes       |
-| `mode`          | `'single' \| 'range' \| 'week'`        | `'single'`   | Selection mode                   |
-| `showTime`      | `boolean`                              | `true`       | Show time picker                 |
-| `use24Hour`     | `boolean`                              | `false`      | Use 24-hour format               |
-| `disabled`      | `boolean`                              | `false`      | Disable the picker               |
-| `disabledDates` | `Date[]`                               | `[]`         | Array of disabled dates          |
-| `locale`        | `Locale`                               | `undefined`  | date-fns locale object           |
-| `notes`         | `DateNoteType[]`                       | `[]`         | Array of date notes              |
-| `darkMode`      | `boolean`                              | `false`      | Enable dark mode styling         |
-| `isOpen`        | `boolean`                              | `undefined`  | Control open state               |
-| `onOpenChange`  | `(isOpen: boolean) => void`            | `undefined`  | Callback when open state changes |
-| `footer`        | `React.ReactNode`                      | `undefined`  | Custom footer content            |
-| `styles`        | `StyleProps`                           | `{}`         | Custom style classes             |
-| `showTooltip`   | `boolean`                              | `false`      | Enable tooltips in calendar      |
+| Prop            | Type                                   | Default      | Description                          |
+| --------------- | -------------------------------------- | ------------ | ------------------------------------ |
+| `value`         | `Date \| [Date, Date]`                 | `new Date()` | Selected date or date range          |
+| `onChange`      | `(date: Date \| [Date, Date]) => void` | Required     | Callback when date changes           |
+| `mode`          | `'single' \| 'range' \| 'week'`        | `'single'`   | Selection mode                       |
+| `showTime`      | `boolean`                              | `true`       | Show time picker                     |
+| `use24Hour`     | `boolean`                              | `false`      | Use 24-hour format                   |
+| `disabled`      | `boolean`                              | `false`      | Disable the picker                   |
+| `disabledDates` | `Date[]`                               | `[]`         | Array of disabled dates              |
+| `minDate`       | `Date`                                 | `undefined`  | Earliest selectable date (inclusive) |
+| `maxDate`       | `Date`                                 | `undefined`  | Latest selectable date (inclusive)   |
+| `locale`        | `Locale`                               | `undefined`  | date-fns locale object               |
+| `notes`         | `DateNoteType[]`                       | `[]`         | Array of date notes                  |
+| `darkMode`      | `boolean`                              | `false`      | Enable dark mode styling             |
+| `isOpen`        | `boolean`                              | `undefined`  | Control open state                   |
+| `onOpenChange`  | `(isOpen: boolean) => void`            | `undefined`  | Callback when open state changes     |
+| `footer`        | `React.ReactNode`                      | `undefined`  | Custom footer content                |
+| `styles`        | `StyleProps`                           | `{}`         | Custom style classes                 |
+| `showTooltip`   | `boolean`                              | `false`      | Enable tooltips in calendar          |
 
 ### TimePicker Props
 
