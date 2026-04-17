@@ -226,7 +226,7 @@ describe("DateTimePicker", () => {
         <DateTimePicker {...defaultProps} maxDate={new Date("2024-03-20")} />,
       );
       await userEvent.click(screen.getByRole("button"));
-      await userEvent.click(screen.getByText("20"));
+      await userEvent.click(screen.getByText("15"));
       expect(defaultProps.onChange).toHaveBeenCalled();
     });
   });
