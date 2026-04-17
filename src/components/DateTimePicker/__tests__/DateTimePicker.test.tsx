@@ -159,4 +159,75 @@ describe("DateTimePicker", () => {
       expect(screen.getByText("Test note")).toBeInTheDocument();
     }
   });
+
+  describe("minDate and maxDate", () => {
+    it("disables dates before minDate", async () => {
+      render(
+        <DateTimePicker {...defaultProps} minDate={new Date("2024-03-10")} />,
+      );
+      await userEvent.click(screen.getByRole("button"));
+      const day5 = screen.getByText("5");
+      expect(day5).toBeDisabled();
+      expect(day5).toHaveClass("disabled");
+    });
+
+    it("disables dates after maxDate", async () => {
+      render(
+        <DateTimePicker {...defaultProps} maxDate={new Date("2024-03-20")} />,
+      );
+      await userEvent.click(screen.getByRole("button"));
+      const day25 = screen.getByText("25");
+      expect(day25).toBeDisabled();
+      expect(day25).toHaveClass("disabled");
+    });
+
+    it("does not call onChange when clicking a date before minDate", async () => {
+      render(
+        <DateTimePicker {...defaultProps} minDate={new Date("2024-03-10")} />,
+      );
+      await userEvent.click(screen.getByRole("button"));
+      await userEvent.click(screen.getByText("5"));
+      expect(defaultProps.onChange).not.toHaveBeenCalled();
+    });
+
+    it("does not call onChange when clicking a date after maxDate", async () => {
+      render(
+        <DateTimePicker {...defaultProps} maxDate={new Date("2024-03-20")} />,
+      );
+      await userEvent.click(screen.getByRole("button"));
+      await userEvent.click(screen.getByText("25"));
+      expect(defaultProps.onChange).not.toHaveBeenCalled();
+    });
+
+    it("allows selecting dates within minDate and maxDate range", async () => {
+      render(
+        <DateTimePicker
+          {...defaultProps}
+          minDate={new Date("2024-03-10")}
+          maxDate={new Date("2024-03-20")}
+        />,
+      );
+      await userEvent.click(screen.getByRole("button"));
+      await userEvent.click(screen.getByText("15"));
+      expect(defaultProps.onChange).toHaveBeenCalled();
+    });
+
+    it("allows selecting the minDate itself", async () => {
+      render(
+        <DateTimePicker {...defaultProps} minDate={new Date("2024-03-10")} />,
+      );
+      await userEvent.click(screen.getByRole("button"));
+      await userEvent.click(screen.getByText("10"));
+      expect(defaultProps.onChange).toHaveBeenCalled();
+    });
+
+    it("allows selecting the maxDate itself", async () => {
+      render(
+        <DateTimePicker {...defaultProps} maxDate={new Date("2024-03-20")} />,
+      );
+      await userEvent.click(screen.getByRole("button"));
+      await userEvent.click(screen.getByText("20"));
+      expect(defaultProps.onChange).toHaveBeenCalled();
+    });
+  });
 });

@@ -4,7 +4,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { DateTimePicker } from "../../src/components/DateTimePicker/DateTimePicker";
 import { TimePicker } from "../../src/components/TimePicker/TimePicker";
 import { enUS, fr } from "date-fns/locale";
-import { addDays, startOfWeek, endOfWeek } from "date-fns";
+import { addDays, subDays, startOfWeek, endOfWeek } from "date-fns";
 
 export const Examples: FC = () => {
   const [singleDate, setSingleDate] = useState(new Date());
@@ -274,6 +274,32 @@ const [time, setTime] = useState<Date | [Date, Date]>(new Date());
   mode="single"
   showTime={false}
   locale={enUS}
+/>`}
+      </CodeBlock>
+
+      <h2>Min/Max Date Constraints</h2>
+      <div className="not-prose mb-4">
+        <DateTimePicker
+          value={singleDate}
+          onChange={(date) => setSingleDate(date as Date)}
+          mode="single"
+          showTime={false}
+          locale={enUS}
+          minDate={subDays(new Date(), 3)}
+          maxDate={addDays(new Date(), 30)}
+        />
+      </div>
+      <CodeBlock language="tsx">
+        {`import { addDays, subDays } from 'date-fns';
+
+<DateTimePicker
+  value={date}
+  onChange={setDate}
+  mode="single"
+  showTime={false}
+  locale={enUS}
+  minDate={subDays(new Date(), 3)}
+  maxDate={addDays(new Date(), 30)}
 />`}
       </CodeBlock>
 

@@ -142,6 +142,36 @@ import '@atawi/react-date-picker/style.css';
               </tr>
               <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
                 <td className="px-4 py-3 font-mono text-sm text-indigo-600 dark:text-indigo-400">
+                  minDate
+                </td>
+                <td className="px-4 py-3 font-mono text-sm text-gray-800 dark:text-gray-200">
+                  Date
+                </td>
+                <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+                  undefined
+                </td>
+                <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+                  Earliest selectable date (inclusive). Dates before this are
+                  disabled.
+                </td>
+              </tr>
+              <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                <td className="px-4 py-3 font-mono text-sm text-indigo-600 dark:text-indigo-400">
+                  maxDate
+                </td>
+                <td className="px-4 py-3 font-mono text-sm text-gray-800 dark:text-gray-200">
+                  Date
+                </td>
+                <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+                  undefined
+                </td>
+                <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+                  Latest selectable date (inclusive). Dates after this are
+                  disabled.
+                </td>
+              </tr>
+              <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                <td className="px-4 py-3 font-mono text-sm text-indigo-600 dark:text-indigo-400">
                   locale
                 </td>
                 <td className="px-4 py-3 font-mono text-sm text-gray-800 dark:text-gray-200">
