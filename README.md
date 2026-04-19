@@ -8,6 +8,19 @@
 
 A beautiful, customizable date and time picker component for React with comprehensive built-in styling, multiple themes and localization support.
 
+<table>
+  <tr>
+    <td><img width="312" height="498" alt="image" src="https://github.com/user-attachments/assets/8c78f439-7dea-49f5-bd1c-45edc1a77406" /></td>
+    <td><img width="316" height="424" alt="image" src="https://github.com/user-attachments/assets/ce8042e8-a663-4244-9c04-f5900112d5ea" /></td>
+    <td><img width="310" height="422" alt="image" src="https://github.com/user-attachments/assets/a41df0c1-23b1-44d7-8aec-66e19fc16a61" /></td>
+  </tr>
+  <tr>
+    <td align="center">Single date light mode</td>
+    <td align="center">Range date light mode</td>
+    <td align="center">Range date dark mode</td>
+  </tr>
+</table>
+
 ## Features
 
 - 📅 Multiple selection modes:
