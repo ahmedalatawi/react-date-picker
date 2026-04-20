@@ -230,4 +230,71 @@ describe("DateTimePicker", () => {
       expect(defaultProps.onChange).toHaveBeenCalled();
     });
   });
+
+  describe("clearable + placeholder", () => {
+    it("renders the default placeholder when value is null", () => {
+      render(<DateTimePicker value={null} onChange={vi.fn()} />);
+      expect(screen.getByRole("button")).toHaveTextContent("Select date");
+    });
+
+    it("renders a custom placeholder when value is null", () => {
+      render(
+        <DateTimePicker
+          value={null}
+          onChange={vi.fn()}
+          placeholder="Pick a date…"
+        />,
+      );
+      expect(screen.getByRole("button")).toHaveTextContent("Pick a date…");
+    });
+
+    it("does not render the clear button when clearable is false", () => {
+      render(<DateTimePicker {...defaultProps} />);
+      expect(
+        document.querySelector(".date-picker-clear-button"),
+      ).not.toBeInTheDocument();
+    });
+
+    it("does not render the clear button when value is empty", () => {
+      render(<DateTimePicker value={null} onChange={vi.fn()} clearable />);
+      expect(
+        document.querySelector(".date-picker-clear-button"),
+      ).not.toBeInTheDocument();
+    });
+
+    it("renders the clear button when clearable and value exists", () => {
+      render(<DateTimePicker {...defaultProps} clearable />);
+      expect(
+        document.querySelector(".date-picker-clear-button"),
+      ).toBeInTheDocument();
+    });
+
+    it("calls onChange(null) and onClear when the clear button is clicked", () => {
+      const onChange = vi.fn();
+      const onClear = vi.fn();
+      render(
+        <DateTimePicker
+          value={defaultProps.value}
+          onChange={onChange}
+          clearable
+          onClear={onClear}
+        />,
+      );
+      const clearBtn = document.querySelector(
+        ".date-picker-clear-button",
+      ) as HTMLElement;
+      fireEvent.click(clearBtn);
+      expect(onChange).toHaveBeenCalledWith(null);
+      expect(onClear).toHaveBeenCalledTimes(1);
+    });
+
+    it("does not open the popover when clicking the clear button", () => {
+      render(<DateTimePicker {...defaultProps} clearable />);
+      const clearBtn = document.querySelector(
+        ".date-picker-clear-button",
+      ) as HTMLElement;
+      fireEvent.click(clearBtn);
+      expect(screen.queryByText("March")).not.toBeInTheDocument();
+    });
+  });
 });

@@ -176,6 +176,26 @@ const notes = [
 <DateTimePicker value={date} onChange={setDate} mode="single" notes={notes} />;
 ```
 
+### Clearable Value with Custom Placeholder
+
+Pass `clearable` to render an inline `×` button on the trigger that resets the
+value. The optional `placeholder` prop replaces the default `"Select date"`
+text shown when no value is selected. The cleared value is delivered as `null`
+through `onChange` (and an optional `onClear` callback).
+
+```tsx
+const [date, setDate] = useState<Date | [Date, Date] | null>(null);
+
+<DateTimePicker
+  value={date}
+  onChange={setDate}
+  mode="single"
+  clearable
+  placeholder="Pick a date…"
+  onClear={() => console.log("cleared")}
+/>;
+```
+
 ### Dark Mode
 
 ```tsx
