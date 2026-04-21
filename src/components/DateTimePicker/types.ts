@@ -14,8 +14,11 @@ export interface StyleProps {
 }
 
 export interface DateTimePickerProps {
-  value?: Date | [Date, Date];
-  onChange: (date: Date | [Date, Date]) => void;
+  value?: Date | [Date, Date] | null;
+  onChange: (date: Date | [Date, Date] | null) => void;
+  clearable?: boolean;
+  placeholder?: string;
+  onClear?: () => void;
   mode?: "single" | "range" | "week";
   showTime?: boolean;
   use24Hour?: boolean;

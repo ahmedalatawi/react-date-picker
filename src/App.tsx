@@ -11,6 +11,7 @@ import { ConfirmationExample } from "./components/examples/ConfirmationExample";
 import { TimePickerExample } from "./components/examples/TimePickerExample";
 import { WeekRangeExample } from "./components/examples/WeekRangeExample";
 import { MinMaxExample } from "./components/examples/MinMaxExample";
+import { ClearableExample } from "./components/examples/ClearableExample";
 
 function App() {
   const [singleDate, setSingleDate] = useState<Date>(new Date());
@@ -151,6 +152,54 @@ function App() {
                 Min/Max Date Example
               </label>
               <MinMaxExample />
+            </div>
+          </div>
+        </section>
+
+        {/* Clearable Date */}
+        <section
+          style={{
+            background: "white",
+            borderRadius: "1rem",
+            boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+            border: "1px solid #e5e7eb",
+            padding: "2rem",
+          }}
+        >
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: "bold",
+              color: "#1f2937",
+              marginBottom: "1.5rem",
+            }}
+          >
+            Clearable Date
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gap: "2rem",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.5rem",
+              }}
+            >
+              <label
+                style={{
+                  fontSize: "0.875rem",
+                  fontWeight: "500",
+                  color: "#374151",
+                }}
+              >
+                Clearable with custom placeholder
+              </label>
+              <ClearableExample />
             </div>
           </div>
         </section>

@@ -47,7 +47,7 @@ import '@atawi/react-date-picker/style.css';
                   value
                 </td>
                 <td className="px-4 py-3 font-mono text-sm text-gray-800 dark:text-gray-200">
-                  Date | [Date, Date]
+                  Date | [Date, Date] | null
                 </td>
                 <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
                   new Date()
@@ -61,7 +61,7 @@ import '@atawi/react-date-picker/style.css';
                   onChange
                 </td>
                 <td className="px-4 py-3 font-mono text-sm text-gray-800 dark:text-gray-200">
-                  (date: Date | [Date, Date]) =&gt; void
+                  (date: Date | [Date, Date] | null) =&gt; void
                 </td>
                 <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
                   Required
@@ -168,6 +168,49 @@ import '@atawi/react-date-picker/style.css';
                 <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
                   Latest selectable date (inclusive). Dates after this are
                   disabled.
+                </td>
+              </tr>
+              <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                <td className="px-4 py-3 font-mono text-sm text-indigo-600 dark:text-indigo-400">
+                  clearable
+                </td>
+                <td className="px-4 py-3 font-mono text-sm text-gray-800 dark:text-gray-200">
+                  boolean
+                </td>
+                <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+                  false
+                </td>
+                <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+                  Show a × button on the trigger to clear the value. Calls
+                  onChange(null).
+                </td>
+              </tr>
+              <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                <td className="px-4 py-3 font-mono text-sm text-indigo-600 dark:text-indigo-400">
+                  placeholder
+                </td>
+                <td className="px-4 py-3 font-mono text-sm text-gray-800 dark:text-gray-200">
+                  string
+                </td>
+                <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+                  'Select date'
+                </td>
+                <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+                  Text shown on the trigger when no value is selected.
+                </td>
+              </tr>
+              <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                <td className="px-4 py-3 font-mono text-sm text-indigo-600 dark:text-indigo-400">
+                  onClear
+                </td>
+                <td className="px-4 py-3 font-mono text-sm text-gray-800 dark:text-gray-200">
+                  () =&gt; void
+                </td>
+                <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+                  undefined
+                </td>
+                <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+                  Called when the user clicks the clear button.
                 </td>
               </tr>
               <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">

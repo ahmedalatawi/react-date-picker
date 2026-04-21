@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { FC, MouseEvent as ReactMouseEvent } from "react";
 import { useState, useRef } from "react";
 import {
   format,
@@ -51,14 +51,29 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
   footer,
   className = "",
   darkMode = false,
+  clearable = false,
+  placeholder = "Select date",
+  onClear,
 }) => {
   const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen =
     controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = onOpenChange || setInternalIsOpen;
 
+  const hasValue =
+    value instanceof Date ||
+    (Array.isArray(value) &&
+      value[0] instanceof Date &&
+      value[1] instanceof Date);
+
   const [currentDate, setCurrentDate] = useState(
-    mode === "single" ? (value as Date) : (value as [Date, Date])[0],
+    mode === "single"
+      ? value instanceof Date
+        ? value
+        : new Date()
+      : Array.isArray(value)
+        ? value[0]
+        : new Date(),
   );
   const [selectedRange, setSelectedRange] = useState<
     [Date | null, Date | null]
@@ -154,7 +169,15 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
     } else if ((mode === "range" || mode === "week") && Array.isArray(value)) {
       return `${formatDate(value[0], "PP")} - ${formatDate(value[1], "PP")}`;
     }
-    return "Select date";
+    return placeholder;
+  };
+
+  const handleClear = (e: ReactMouseEvent) => {
+    e.stopPropagation();
+    setSelectedRange([null, null]);
+    setHoverDate(null);
+    onChange(null);
+    if (onClear) onClear();
   };
 
   return (
@@ -181,7 +204,9 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
           >
             <Calendar
               currentDate={currentDate}
-              selectedDate={mode === "single" ? (value as Date) : undefined}
+              selectedDate={
+                mode === "single" && value instanceof Date ? value : undefined
+              }
               selectedRange={
                 mode === "range" || mode === "week" ? selectedRange : undefined
               }
@@ -219,9 +244,11 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
             <DateNote
               notes={notes}
               hoveredDate={hoverDate}
-              selectedDate={mode === "single" ? (value as Date) : undefined}
+              selectedDate={
+                mode === "single" && value instanceof Date ? value : undefined
+              }
               selectedRange={
-                mode === "range" || mode === "week"
+                mode === "range" || (mode === "week" && Array.isArray(value))
                   ? (value as [Date, Date])
                   : undefined
               }
@@ -234,15 +261,35 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
         <button
           ref={triggerRef}
           className={`date-picker-trigger ${darkMode ? "dark-mode" : ""} ${
-            styles?.triggerClassName || ""
-          }`}
+            !hasValue ? "is-empty" : ""
+          } ${styles?.triggerClassName || ""}`}
           onClick={() => !disabled && setIsOpen(!isOpen)}
           disabled={disabled}
           aria-haspopup="dialog"
           aria-expanded={isOpen}
           aria-label="Choose date and time"
         >
-          {formatTriggerValue()}
+          <span className="date-picker-trigger-label">
+            {formatTriggerValue()}
+          </span>
+          {clearable && hasValue && !disabled && (
+            <span
+              role="button"
+              tabIndex={0}
+              className="date-picker-clear-button"
+              aria-label="Clear date"
+              onClick={handleClear}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleClear(e as unknown as ReactMouseEvent);
+                }
+              }}
+            >
+              ×
+            </span>
+          )}
         </button>
       </Popover>
     </div>
