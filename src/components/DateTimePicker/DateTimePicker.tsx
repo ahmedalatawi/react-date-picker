@@ -259,6 +259,7 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
         }
       >
         <button
+          type="button"
           ref={triggerRef}
           className={`date-picker-trigger ${darkMode ? "dark-mode" : ""} ${
             !hasValue ? "is-empty" : ""
