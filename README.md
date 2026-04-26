@@ -176,6 +176,27 @@ const notes = [
 <DateTimePicker value={date} onChange={setDate} mode="single" notes={notes} />;
 ```
 
+### Auto-close Behavior (`closeOnSelect`)
+
+Control whether the popover auto-closes after a selection. Defaults to
+`"auto"`, which provides the most natural behavior for each mode.
+
+| Value    | Behavior                                                                                                                                                                           |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `"auto"` | Closes after date pick when `showTime` is off. When `showTime` is on, waits and closes after the user picks the minute. In `range`/`week` mode, closes once the range is complete. |
+| `true`   | Closes immediately on date pick, even when `showTime` is on.                                                                                                                       |
+| `false`  | Never auto-closes; user must click outside or use a footer action.                                                                                                                 |
+
+> Providing a `footer` always overrides auto-close (assumed explicit confirm flow).
+
+```tsx
+// Close immediately after date pick, skip waiting for time
+<DateTimePicker value={date} onChange={setDate} showTime closeOnSelect />
+
+// Disable auto-close entirely
+<DateTimePicker value={date} onChange={setDate} closeOnSelect={false} />
+```
+
 ### Clearable Value with Custom Placeholder
 
 Pass `clearable` to render an inline `×` button on the trigger that resets the
@@ -308,25 +329,29 @@ import { addDays, subDays } from "date-fns";
 
 ### DateTimePicker Props
 
-| Prop            | Type                                   | Default      | Description                          |
-| --------------- | -------------------------------------- | ------------ | ------------------------------------ |
-| `value`         | `Date \| [Date, Date]`                 | `new Date()` | Selected date or date range          |
-| `onChange`      | `(date: Date \| [Date, Date]) => void` | Required     | Callback when date changes           |
-| `mode`          | `'single' \| 'range' \| 'week'`        | `'single'`   | Selection mode                       |
-| `showTime`      | `boolean`                              | `true`       | Show time picker                     |
-| `use24Hour`     | `boolean`                              | `false`      | Use 24-hour format                   |
-| `disabled`      | `boolean`                              | `false`      | Disable the picker                   |
-| `disabledDates` | `Date[]`                               | `[]`         | Array of disabled dates              |
-| `minDate`       | `Date`                                 | `undefined`  | Earliest selectable date (inclusive) |
-| `maxDate`       | `Date`                                 | `undefined`  | Latest selectable date (inclusive)   |
-| `locale`        | `Locale`                               | `undefined`  | date-fns locale object               |
-| `notes`         | `DateNoteType[]`                       | `[]`         | Array of date notes                  |
-| `darkMode`      | `boolean`                              | `false`      | Enable dark mode styling             |
-| `isOpen`        | `boolean`                              | `undefined`  | Control open state                   |
-| `onOpenChange`  | `(isOpen: boolean) => void`            | `undefined`  | Callback when open state changes     |
-| `footer`        | `React.ReactNode`                      | `undefined`  | Custom footer content                |
-| `styles`        | `StyleProps`                           | `{}`         | Custom style classes                 |
-| `showTooltip`   | `boolean`                              | `false`      | Enable tooltips in calendar          |
+| Prop            | Type                                   | Default         | Description                             |
+| --------------- | -------------------------------------- | --------------- | --------------------------------------- |
+| `value`         | `Date \| [Date, Date]`                 | `new Date()`    | Selected date or date range             |
+| `onChange`      | `(date: Date \| [Date, Date]) => void` | Required        | Callback when date changes              |
+| `mode`          | `'single' \| 'range' \| 'week'`        | `'single'`      | Selection mode                          |
+| `showTime`      | `boolean`                              | `true`          | Show time picker                        |
+| `use24Hour`     | `boolean`                              | `false`         | Use 24-hour format                      |
+| `disabled`      | `boolean`                              | `false`         | Disable the picker                      |
+| `disabledDates` | `Date[]`                               | `[]`            | Array of disabled dates                 |
+| `minDate`       | `Date`                                 | `undefined`     | Earliest selectable date (inclusive)    |
+| `maxDate`       | `Date`                                 | `undefined`     | Latest selectable date (inclusive)      |
+| `locale`        | `Locale`                               | `undefined`     | date-fns locale object                  |
+| `notes`         | `DateNoteType[]`                       | `[]`            | Array of date notes                     |
+| `darkMode`      | `boolean`                              | `false`         | Enable dark mode styling                |
+| `isOpen`        | `boolean`                              | `undefined`     | Control open state                      |
+| `onOpenChange`  | `(isOpen: boolean) => void`            | `undefined`     | Callback when open state changes        |
+| `footer`        | `React.ReactNode`                      | `undefined`     | Custom footer content                   |
+| `styles`        | `StyleProps`                           | `{}`            | Custom style classes                    |
+| `showTooltip`   | `boolean`                              | `false`         | Enable tooltips in calendar             |
+| `clearable`     | `boolean`                              | `false`         | Show a × button on the trigger to clear |
+| `placeholder`   | `string`                               | `'Select date'` | Trigger text when no value is selected  |
+| `onClear`       | `() => void`                           | `undefined`     | Called when the user clicks clear       |
+| `closeOnSelect` | `boolean \| 'auto'`                    | `'auto'`        | Popover auto-close behavior (see above) |
 
 ### TimePicker Props
 

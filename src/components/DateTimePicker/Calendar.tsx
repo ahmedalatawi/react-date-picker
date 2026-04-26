@@ -172,9 +172,11 @@ export const Calendar: FC<CalendarProps> = ({
     isRangeStart: boolean,
     isRangeEnd: boolean,
     isDisabled: boolean,
+    isToday: boolean,
   ) => {
     let classes = `calendar-day ${styles.dayClassName || ""}`;
     if (darkMode) classes += " dark-mode";
+    if (isToday) classes += " today";
     if (isSelected) classes += ` selected ${styles.selectedDayClassName || ""}`;
     if (inRange && mode !== "single")
       classes += ` in-range ${styles.rangeClassName || ""}`;
@@ -236,6 +238,7 @@ export const Calendar: FC<CalendarProps> = ({
       const hasNoteIndicator = hasNote(date, notes);
       const isInHoveredWeek =
         mode === "week" && hoverDate && isDateInWeek(date, hoverDate);
+      const isToday = isSameDay(date, new Date());
 
       const dayElement = (
         <div key={day} className="calendar-day-container">
@@ -250,8 +253,10 @@ export const Calendar: FC<CalendarProps> = ({
               !!isRangeStart,
               !!isRangeEnd,
               isDisabled,
+              isToday,
             )}
             disabled={isDisabled}
+            aria-current={isToday ? "date" : undefined}
           >
             {day}
             {hasNoteIndicator && <span className="note-indicator" />}

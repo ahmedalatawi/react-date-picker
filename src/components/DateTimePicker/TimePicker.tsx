@@ -5,7 +5,7 @@ import { ClockIcon } from "../icons";
 
 interface TimePickerProps {
   value: Date;
-  onChange: (date: Date) => void;
+  onChange: (date: Date, source?: "hour" | "minute" | "period") => void;
   use24Hour?: boolean;
   locale?: Locale;
   className?: string;
@@ -41,13 +41,13 @@ export const TimePicker: FC<TimePickerProps> = ({
   const handleHourClick = (hour: number) => {
     const newHour = !use24Hour && period === "PM" ? (hour % 12) + 12 : hour;
     const newDate = setHours(value, newHour);
-    onChange(newDate);
+    onChange(newDate, "hour");
     setIsSelectingHour(false);
   };
 
   const handleMinuteClick = (minute: number) => {
     const newDate = setMinutes(value, minute);
-    onChange(newDate);
+    onChange(newDate, "minute");
     setShowPicker(false);
   };
 
@@ -55,7 +55,7 @@ export const TimePicker: FC<TimePickerProps> = ({
     const currentHour = value.getHours();
     const newHour = currentHour >= 12 ? currentHour - 12 : currentHour + 12;
     const newDate = setHours(value, newHour);
-    onChange(newDate);
+    onChange(newDate, "period");
   };
 
   const formatTimeDisplay = () => {

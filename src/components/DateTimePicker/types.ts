@@ -36,4 +36,13 @@ export interface DateTimePickerProps {
   footer?: ReactNode;
   className?: string;
   darkMode?: boolean;
+  /**
+   * Controls whether the popover auto-closes after a selection.
+   * - `"auto"` (default): closes after date pick when `showTime` is off; when `showTime` is on,
+   *   closes after the minute is picked. In range/week mode, closes once the range is complete.
+   *   A `footer` always overrides auto-close.
+   * - `true`: closes immediately after date selection, even when `showTime` is on.
+   * - `false`: never auto-closes; user must click outside or use a footer action.
+   */
+  closeOnSelect?: boolean | "auto";
 }

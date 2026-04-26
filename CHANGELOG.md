@@ -12,6 +12,11 @@ All notable changes to this project will be documented in this file.
   no value is selected.
 - New `onClear` callback fired when the user clicks the clear button.
 - `value` and `onChange` now accept/return `null` to represent an empty state.
+- New `closeOnSelect` prop (`boolean | "auto"`, default `"auto"`) controlling
+  popover auto-close behavior. With `"auto"`, the popover closes after the date
+  pick when `showTime` is off, and after the minute pick when `showTime` is on.
+  `true` closes immediately on date pick; `false` disables auto-close. A
+  `footer` always overrides auto-close.
 
 ### Breaking Changes
 

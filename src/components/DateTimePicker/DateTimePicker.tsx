@@ -54,6 +54,7 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
   clearable = false,
   placeholder = "Select date",
   onClear,
+  closeOnSelect = "auto",
 }) => {
   const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen =
@@ -108,6 +109,21 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
     if (onDateHover) onDateHover(date);
   };
 
+  const shouldCloseAfterDate = (): boolean => {
+    if (footer) return false;
+    if (closeOnSelect === false) return false;
+    if (closeOnSelect === true) return true;
+    // "auto": close on date pick only when time picker isn't shown
+    return !showTime;
+  };
+
+  const shouldCloseAfterTime = (): boolean => {
+    if (footer) return false;
+    if (closeOnSelect === false) return false;
+    // Both `true` and `"auto"` close after the user finishes picking time (minute select)
+    return true;
+  };
+
   const handleDateClick = (date: Date) => {
     if (isDateOutOfBounds(date)) return;
 
@@ -117,13 +133,13 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
         newDate.setHours(value.getHours(), value.getMinutes());
       }
       onChange(newDate);
-      if (!showTime && !footer) setIsOpen(false);
+      if (shouldCloseAfterDate()) setIsOpen(false);
     } else if (mode === "week") {
       const weekStart = startOfWeek(date);
       const weekEnd = endOfWeek(date);
       setSelectedRange([weekStart, weekEnd]);
       onChange([weekStart, weekEnd]);
-      if (!footer) setIsOpen(false);
+      if (!footer && closeOnSelect !== false) setIsOpen(false);
     } else {
       if (!selectedRange[0] || (selectedRange[0] && selectedRange[1])) {
         setSelectedRange([date, null]);
@@ -136,7 +152,7 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
           setSelectedRange([finalRange[0], finalRange[1]]);
           onChange(finalRange);
           setHoverDate(null);
-          if (!footer) setIsOpen(false);
+          if (!footer && closeOnSelect !== false) setIsOpen(false);
         }
       }
     }
@@ -148,9 +164,16 @@ export const DateTimePicker: FC<DateTimePickerProps> = ({
     setCurrentDate,
   );
 
-  const handleTimeChange = (newDate: Date) => {
+  const handleTimeChange = (
+    newDate: Date,
+    source?: "hour" | "minute" | "period",
+  ) => {
     if (mode === "single") {
       onChange(newDate);
+      // Close after the user picks the minute (the natural "I'm done" signal)
+      if (source === "minute" && shouldCloseAfterTime()) {
+        setIsOpen(false);
+      }
     }
   };
 
