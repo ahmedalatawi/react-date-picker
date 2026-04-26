@@ -297,4 +297,73 @@ describe("DateTimePicker", () => {
       expect(screen.queryByText("March")).not.toBeInTheDocument();
     });
   });
+
+  describe("closeOnSelect", () => {
+    const isPopoverOpen = () => screen.queryByText("March") !== null;
+
+    it("auto: closes after date pick when showTime is off", async () => {
+      render(<DateTimePicker {...defaultProps} showTime={false} />);
+      await userEvent.click(screen.getByRole("button"));
+      expect(isPopoverOpen()).toBe(true);
+      await userEvent.click(screen.getByText("18"));
+      expect(isPopoverOpen()).toBe(false);
+    });
+
+    it("auto: stays open after date pick when showTime is on", async () => {
+      render(<DateTimePicker {...defaultProps} showTime />);
+      await userEvent.click(screen.getByRole("button"));
+      await userEvent.click(screen.getByText("18"));
+      expect(isPopoverOpen()).toBe(true);
+    });
+
+    it("auto: closes after minute pick when showTime is on", async () => {
+      render(<DateTimePicker {...defaultProps} showTime />);
+      await userEvent.click(screen.getByRole("button"));
+      // Open the time picker dropdown
+      const timeDisplay = document.querySelector(
+        ".time-display",
+      ) as HTMLElement;
+      await userEvent.click(timeDisplay);
+      // Pick an hour first to switch to minute selection
+      const hourButtons = document.querySelectorAll(".time-number");
+      await userEvent.click(hourButtons[2] as HTMLElement);
+      // Now pick a minute
+      const minuteButtons = document.querySelectorAll(".time-number");
+      await userEvent.click(minuteButtons[3] as HTMLElement);
+      expect(isPopoverOpen()).toBe(false);
+    });
+
+    it("true: closes immediately on date pick even when showTime is on", async () => {
+      render(<DateTimePicker {...defaultProps} showTime closeOnSelect />);
+      await userEvent.click(screen.getByRole("button"));
+      await userEvent.click(screen.getByText("18"));
+      expect(isPopoverOpen()).toBe(false);
+    });
+
+    it("false: never auto-closes after date pick", async () => {
+      render(
+        <DateTimePicker
+          {...defaultProps}
+          showTime={false}
+          closeOnSelect={false}
+        />,
+      );
+      await userEvent.click(screen.getByRole("button"));
+      await userEvent.click(screen.getByText("18"));
+      expect(isPopoverOpen()).toBe(true);
+    });
+
+    it("footer overrides auto-close", async () => {
+      render(
+        <DateTimePicker
+          {...defaultProps}
+          showTime={false}
+          footer={<div>footer</div>}
+        />,
+      );
+      await userEvent.click(screen.getByRole("button"));
+      await userEvent.click(screen.getByText("18"));
+      expect(isPopoverOpen()).toBe(true);
+    });
+  });
 });
