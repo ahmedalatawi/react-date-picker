@@ -1,6 +1,6 @@
 {
   "name": "@atawi/react-date-picker",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "A beautiful, customizable date and time picker component for React with multiple themes and localization support",
   "private": false,
   "type": "module",
@@ -43,7 +43,7 @@
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
-    "@atawi/react-popover": "^1.0.9",
+    "@atawi/react-popover": "^1.0.10",
     "date-fns": "^3.3.1",
     "lucide-react": "^0.358.0",
     "react-router-dom": "^6.22.3",

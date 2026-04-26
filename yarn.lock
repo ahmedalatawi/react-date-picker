@@ -31,10 +31,10 @@
     "@csstools/css-tokenizer" "^3.0.3"
     lru-cache "^10.4.3"
 
-"@atawi/react-popover@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@atawi/react-popover/-/react-popover-1.0.9.tgz#e9babaf23d01303d796ff44bec3594dd55c486cf"
-  integrity sha512-2Nj63p5CtMPHE5fcxyVuOR+xsGJD8z/U2K27Xn0CGhbbBDjhYFIQy5yCOz0viOzuEO56/H4SjfpY+LRYPWO5DA==
+"@atawi/react-popover@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@atawi/react-popover/-/react-popover-1.0.10.tgz#865b067dd81be0a83e98ce5eb1de6ff3cd52cb98"
+  integrity sha512-e9K7bKwbOKhV2+ukhv6MmNQphVN7pueCEGNBSZ539oN7m4RHnkHpVza1lC7WMXeAOE2QZNjdWsZhxvEUU8XA7w==
   dependencies:
     react "^18.3.1"
     react-dom "^18.3.1"
